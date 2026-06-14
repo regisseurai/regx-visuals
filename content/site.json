@@ -5,45 +5,17 @@
     "title_line1": "The",
     "title_line2": "Unexpected",
     "tags": "Action · Sci-Fi · Lagos · 2026",
-    "poster_image": "/uploads/the-unexpected-ii-cover-web.jpg",
+    "poster_image": "",
     "play_video_id": "4s8UjaYg0SI",
     "trailer_video_id": "Y5s4vtN8-5Y"
   },
   "watch": {
     "label": "Watch — Now Streaming",
     "episodes": [
-      {
-        "tag": "EP 1",
-        "title": "The Unexpected",
-        "video_id": "cyYk5aayMWw",
-        "poster_image": "",
-        "status": "Streaming",
-        "streaming": true
-      },
-      {
-        "tag": "EP 2",
-        "title": "The Unexpected",
-        "video_id": "4s8UjaYg0SI",
-        "poster_image": "",
-        "status": "Streaming",
-        "streaming": true
-      },
-      {
-        "tag": "EP 2 · Trailer",
-        "title": "The Unexpected",
-        "video_id": "Y5s4vtN8-5Y",
-        "poster_image": "",
-        "status": "Streaming",
-        "streaming": true
-      },
-      {
-        "tag": "EP 3",
-        "title": "The Unexpected",
-        "video_id": "",
-        "poster_image": "",
-        "status": "In Production",
-        "streaming": false
-      }
+      { "tag": "EP 1", "title": "The Unexpected", "video_id": "cyYk5aayMWw", "poster_image": "", "status": "Streaming", "streaming": true },
+      { "tag": "EP 2", "title": "The Unexpected", "video_id": "4s8UjaYg0SI", "poster_image": "", "status": "Streaming", "streaming": true },
+      { "tag": "EP 2 · Trailer", "title": "The Unexpected", "video_id": "Y5s4vtN8-5Y", "poster_image": "", "status": "Streaming", "streaming": true },
+      { "tag": "EP 3", "title": "The Unexpected", "video_id": "", "poster_image": "", "status": "In Production", "streaming": false }
     ]
   },
   "music": {
@@ -51,52 +23,20 @@
     "album_id": "4esDp7ra8ljDznATkSvpJG",
     "artist_id": "3CZYaEsmbC8rVLSm6AJ3zR",
     "tracks": [
-      {
-        "title": "Aye (Intro)",
-        "track_id": "7KrrAqBPI2SQZD0qO5wlHb"
-      },
-      {
-        "title": "Hold Me",
-        "track_id": "0HUifhJLUrDZqYeUI5riRC"
-      },
-      {
-        "title": "Monster",
-        "track_id": "5YHpGQXh21bdJWKJtGhy13"
-      },
-      {
-        "title": "Only God",
-        "track_id": "7heVP9777F2U8ZSktI7iLx"
-      }
+      { "title": "Aye (Intro)", "track_id": "7KrrAqBPI2SQZD0qO5wlHb" },
+      { "title": "Hold Me", "track_id": "0HUifhJLUrDZqYeUI5riRC" },
+      { "title": "Monster", "track_id": "5YHpGQXh21bdJWKJtGhy13" },
+      { "title": "Only God", "track_id": "7heVP9777F2U8ZSktI7iLx" }
     ]
   },
   "learn": {
     "label": "Learn",
     "lede": "Everything behind The Unexpected — taught the way we actually work.",
     "courses": [
-      {
-        "title": "Foundations",
-        "desc": "Start here — the AI filmmaking pipeline end to end.",
-        "status": "Enroll",
-        "icon": "film"
-      },
-      {
-        "title": "Cinematic Prompting",
-        "desc": "Write prompts that produce real cinematic shots.",
-        "status": "Enroll",
-        "icon": "spark"
-      },
-      {
-        "title": "Character Consistency",
-        "desc": "Keep faces and characters identical across scenes.",
-        "status": "Enroll",
-        "icon": "person"
-      },
-      {
-        "title": "Cinematic Universe",
-        "desc": "Build an episodic world like The Unexpected.",
-        "status": "Soon",
-        "icon": "layers"
-      }
+      { "title": "Foundations", "desc": "Start here — the AI filmmaking pipeline end to end.", "status": "Enroll", "icon": "film" },
+      { "title": "Cinematic Prompting", "desc": "Write prompts that produce real cinematic shots.", "status": "Enroll", "icon": "spark" },
+      { "title": "Character Consistency", "desc": "Keep faces and characters identical across scenes.", "status": "Enroll", "icon": "person" },
+      { "title": "Cinematic Universe", "desc": "Build an episodic world like The Unexpected.", "status": "Soon", "icon": "layers" }
     ]
   },
   "studio": {

@@ -322,6 +322,50 @@
   /* back to top removed in favor of bottom app bar */
   .scrolltop{display:none}
 
+  /* enroll modal */
+  .enroll-modal{
+    position:fixed;inset:0;z-index:210;display:none;
+    align-items:center;justify-content:center;padding:24px;
+    background:rgba(4,6,8,.92);backdrop-filter:blur(8px);
+  }
+  .enroll-modal.open{display:flex}
+  .enroll-card{
+    position:relative;width:100%;max-width:400px;
+    background:#0C1216;border:1px solid var(--line);border-radius:18px;
+    padding:36px 30px 32px;
+  }
+  .enroll-x{
+    position:absolute;top:16px;right:18px;background:none;border:none;
+    color:var(--grey);font-size:14px;cursor:pointer;transition:color .3s;
+  }
+  .enroll-x:hover{color:var(--amber)}
+  .enroll-eyebrow{font-size:10px;letter-spacing:.28em;color:var(--amber);margin-bottom:14px}
+  .enroll-title{
+    font-family:var(--display);font-size:32px;text-transform:uppercase;
+    letter-spacing:.02em;line-height:1;margin-bottom:10px;
+  }
+  .enroll-sub{font-size:14px;color:var(--grey);margin-bottom:26px;line-height:1.5}
+  .enroll-input{
+    width:100%;background:#070A0C;border:1px solid var(--line);
+    padding:15px 16px;margin-bottom:12px;color:var(--bone);
+    font-family:var(--mono);font-size:12px;letter-spacing:.06em;border-radius:8px;
+  }
+  .enroll-input::placeholder{color:rgba(142,151,160,.5)}
+  .enroll-input:focus{outline:none;border-color:var(--amber)}
+  .enroll-submit{
+    width:100%;background:var(--amber);color:var(--black);border:none;cursor:pointer;
+    font-family:var(--mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;
+    padding:16px;border-radius:8px;margin-top:6px;transition:background .25s;
+  }
+  .enroll-submit:hover{background:var(--bone)}
+  .enroll-done{
+    display:none;margin-top:18px;text-align:center;
+    font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--amber);
+  }
+  .enroll-card.sent form{display:none}
+  .enroll-card.sent .enroll-done{display:block}
+  .enroll-card.sent .enroll-sub{display:none}
+
   /* ---- bottom app bar (Higgsfield style) ---- */
   .appbar{
     position:fixed;left:0;right:0;bottom:0;top:auto;z-index:90;
@@ -734,6 +778,26 @@
   </div>
 </section>
 
+<div class="enroll-modal" id="enrollModal" role="dialog" aria-modal="true" aria-label="Enroll">
+  <div class="enroll-card">
+    <button class="enroll-x" onclick="closeEnroll()" aria-label="Close">✕</button>
+    <p class="mono enroll-eyebrow">Learn — REGX VISUALS</p>
+    <h3 class="enroll-title" id="enrollTitle">Enroll</h3>
+    <p class="enroll-sub">Join the waitlist. We'll email you when this course opens.</p>
+
+    <form name="enroll" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="enrollForm" onsubmit="return submitEnroll(event)">
+      <input type="hidden" name="form-name" value="enroll" />
+      <p hidden><label>Don't fill this: <input name="bot-field" /></label></p>
+      <input type="hidden" name="course" id="enrollCourse" value="" />
+      <input class="enroll-input" type="text" name="name" placeholder="YOUR NAME" required />
+      <input class="enroll-input" type="email" name="email" placeholder="YOUR@EMAIL.COM" required />
+      <button class="enroll-submit" type="submit">Join the Waitlist</button>
+    </form>
+
+    <p class="enroll-done" id="enrollDone">You're on the list. We'll be in touch. ✕ to close.</p>
+  </div>
+</div>
+
 <footer>
   <div class="wrap foot">
     <span>© 2026 REGX VISUALS</span>
@@ -874,11 +938,13 @@
         (d.learn.courses||[]).forEach(function(c){
           var a=document.createElement('a'); a.className='course'; a.href='#';
           var open = (c.status||'').toLowerCase()==='enroll' ? ' open' : '';
+          var soon = (c.status||'').toLowerCase()!=='enroll';
           a.innerHTML='<div class="co-top"><span class="co-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">'+
             (COURSE_ICONS[c.icon]||COURSE_ICONS.film)+'</svg></span>'+
             '<span class="co-badge'+open+'">'+esc(c.status)+'</span></div>'+
             '<span class="co-title">'+esc(c.title)+'</span>'+
             (c.desc?'<span class="co-desc">'+esc(c.desc)+'</span>':'');
+          a.onclick=function(e){ e.preventDefault(); openEnroll(c.title, soon); };
           grid.appendChild(a);
         });
       }
@@ -957,7 +1023,39 @@
     if(e.target === this) closeVideo();
   });
   document.addEventListener('keydown', function(e){
-    if(e.key === 'Escape'){ closeVideo(); closeMenu(); }
+    if(e.key === 'Escape'){ closeVideo(); closeMenu(); closeEnroll(); }
+  });
+
+  /* ---------- Enroll popup (Netlify Forms) ---------- */
+  function openEnroll(courseTitle, soon){
+    var modal=document.getElementById('enrollModal');
+    var card=modal.querySelector('.enroll-card');
+    card.classList.remove('sent');
+    document.getElementById('enrollForm').reset();
+    document.getElementById('enrollCourse').value = courseTitle || 'Course';
+    document.getElementById('enrollTitle').textContent = courseTitle || 'Enroll';
+    document.querySelector('.enroll-sub').textContent = soon
+      ? "This course is coming soon — join the waitlist and we'll email you first."
+      : "Join the waitlist. We'll email you when this course opens.";
+    modal.classList.add('open');
+    document.body.style.overflow='hidden';
+  }
+  function closeEnroll(){
+    var modal=document.getElementById('enrollModal');
+    modal.classList.remove('open');
+    document.body.style.overflow='';
+  }
+  function submitEnroll(e){
+    e.preventDefault();
+    var form=e.target;
+    var data=new URLSearchParams(new FormData(form)).toString();
+    fetch('/', { method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'}, body:data })
+      .then(function(){ form.closest('.enroll-card').classList.add('sent'); })
+      .catch(function(){ form.closest('.enroll-card').classList.add('sent'); });
+    return false;
+  }
+  document.getElementById('enrollModal').addEventListener('click', function(e){
+    if(e.target === this) closeEnroll();
   });
 
   /* ---------- PWA: register service worker ---------- */
