@@ -393,11 +393,19 @@
     text-transform:uppercase;
     transform:translateY(-16px);                  /* only the top peeks above the bar */
   }
-  .ab-center img{
-    width:60px;height:auto;border-radius:16px;display:block;
+  .ab-center-btn{
+    width:72px;height:58px;border-radius:18px;
+    background:var(--amber);
+    display:grid;place-items:center;
+    box-shadow:0 6px 0 #BE7F22;                   /* darker amber base = 3D depth */
+    transition:transform .08s, box-shadow .08s;
   }
-  .ab-center span{transform:translateY(2px)}
-  .ab-center:active img{transform:scale(.95)}
+  .ab-center-btn svg{width:100%;height:100%;display:block}
+  .ab-center-label{transform:translateY(2px)}
+  .ab-center:active .ab-center-btn{
+    transform:translateY(4px);
+    box-shadow:0 2px 0 #BE7F22;                   /* presses down on tap */
+  }
 
   /* studio statement */
   #studio p{
@@ -849,8 +857,15 @@
     <span>Music</span>
   </a>
   <button class="ab-center" onclick="playVideo(event,'4s8UjaYg0SI')" aria-label="Watch latest">
-    <img src="watch-btn.png" alt="" />
-    <span>Watch</span>
+    <span class="ab-center-btn">
+      <svg viewBox="0 0 100 100" aria-hidden="true">
+        <g fill="#0A0D10" transform="translate(50,50) scale(0.50) translate(-50,-50)">
+          <polygon points="70,27 34,62 34,75 70,40"/>
+          <polygon points="5,7 46.9,53.3 95,93 53.1,46.7"/>
+        </g>
+      </svg>
+    </span>
+    <span class="ab-center-label">Watch</span>
   </button>
   <a class="ab-item" href="#learn">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 2.6 9 2.6 12 0v-5"/></svg>
