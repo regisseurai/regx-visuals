@@ -1,0 +1,105 @@
+# ============================================================
+# REGX VISUALS — CMS configuration
+# Edit content at: https://regxvisuals.com/admin
+#
+# IMPORTANT: replace YOUR-GITHUB-USERNAME below with your real
+# GitHub username (the repo is YOUR-GITHUB-USERNAME/regx-visuals).
+# ============================================================
+backend:
+  name: github
+  repo: regisseurai/regx-visuals
+  branch: main
+
+# Where uploaded images go
+media_folder: "uploads"
+public_folder: "/uploads"
+
+collections:
+  - name: "site"
+    label: "Site Content"
+    files:
+      - name: "content"
+        label: "Edit Site Content"
+        file: "content/site.json"
+        editor:
+          preview: false
+        fields:
+          # ---------- HOME BANNER ----------
+          - label: "Home Banner (Latest)"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow lead", name: "eyebrow_lead", widget: "string", hint: "e.g. Latest Release" }
+              - { label: "Eyebrow emphasis", name: "eyebrow_emphasis", widget: "string", hint: "e.g. Episode Two" }
+              - { label: "Title line 1", name: "title_line1", widget: "string", hint: "e.g. The" }
+              - { label: "Title line 2 (outlined)", name: "title_line2", widget: "string", hint: "e.g. Unexpected" }
+              - { label: "Genre tags", name: "tags", widget: "string", hint: "e.g. Action · Sci-Fi · Lagos · 2026" }
+              - { label: "Play — YouTube video ID", name: "play_video_id", widget: "string", hint: "The part after youtu.be/ — e.g. 4s8UjaYg0SI" }
+              - { label: "Trailer — YouTube video ID", name: "trailer_video_id", widget: "string", required: false, hint: "Leave blank to hide the Trailer button" }
+
+          - label: "Watch — Episodes"
+            name: "watch"
+            widget: "object"
+            fields:
+              - { label: "Section label", name: "label", widget: "string" }
+              - label: "Episodes"
+                name: "episodes"
+                widget: "list"
+                summary: "{{fields.tag}} — {{fields.title}}"
+                fields:
+                  - { label: "Tag", name: "tag", widget: "string", hint: "e.g. EP 1, EP 2 · Trailer" }
+                  - { label: "Title", name: "title", widget: "string", hint: "e.g. The Unexpected" }
+                  - { label: "YouTube video ID", name: "video_id", widget: "string", required: false }
+                  - { label: "Status", name: "status", widget: "string", hint: "e.g. Streaming, In Production" }
+                  - { label: "Is it streaming? (playable)", name: "streaming", widget: "boolean", default: true }
+
+          - label: "Music"
+            name: "music"
+            widget: "object"
+            fields:
+              - { label: "Section label", name: "label", widget: "string" }
+              - { label: "Spotify Album ID", name: "album_id", widget: "string", hint: "The part after /album/ in the Spotify link" }
+              - { label: "Spotify Artist ID", name: "artist_id", widget: "string", hint: "The part after /artist/ in your artist link" }
+              - label: "Tracks"
+                name: "tracks"
+                widget: "list"
+                summary: "{{fields.title}}"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Spotify Track ID", name: "track_id", widget: "string", hint: "The part after /track/ in the song link" }
+
+          - label: "Learn"
+            name: "learn"
+            widget: "object"
+            fields:
+              - { label: "Section label", name: "label", widget: "string" }
+              - { label: "Intro line", name: "lede", widget: "text" }
+              - label: "Courses"
+                name: "courses"
+                widget: "list"
+                summary: "{{fields.title}}"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Button text", name: "status", widget: "string", hint: "Enroll, or Soon" }
+                  - label: "Icon"
+                    name: "icon"
+                    widget: "select"
+                    options: ["film", "spark", "person", "layers"]
+                    default: "film"
+
+          - label: "Studio"
+            name: "studio"
+            widget: "object"
+            fields:
+              - { label: "Section label", name: "label", widget: "string" }
+              - { label: "Body text", name: "body", widget: "text" }
+              - { label: "Signature", name: "signature", widget: "string" }
+
+          - label: "Contact"
+            name: "contact"
+            widget: "object"
+            fields:
+              - { label: "Section label", name: "label", widget: "string" }
+              - { label: "Headline line 1", name: "headline_line1", widget: "string" }
+              - { label: "Headline line 2", name: "headline_line2", widget: "string" }
+              - { label: "Email", name: "email", widget: "string" }
