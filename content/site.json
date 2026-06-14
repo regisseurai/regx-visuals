@@ -5,7 +5,7 @@
     "title_line1": "The",
     "title_line2": "Unexpected",
     "tags": "Action · Sci-Fi · Lagos · 2026",
-    "poster_image": "",
+    "poster_image": "/uploads/the-unexpected-ii-cover-web.jpg",
     "play_video_id": "4s8UjaYg0SI",
     "trailer_video_id": "Y5s4vtN8-5Y"
   },
@@ -43,6 +43,18 @@
         "poster_image": "",
         "status": "In Production",
         "streaming": false
+      },
+      {
+        "streaming": false,
+        "tag": "EP 1",
+        "title": "Rush Hour",
+        "status": "In Production"
+      },
+      {
+        "streaming": false,
+        "tag": "EP 1",
+        "title": "The Silence Between Drums",
+        "status": "In Production"
       }
     ]
   },
@@ -103,7 +115,7 @@
     "label": "The Studio",
     "body": "REGX VISUALS is a Lagos film studio building blockbuster-scale African cinema with AI-first pipelines — one city, one universe, every frame intended.",
     "signature": "A REGX VISUALS PRODUCTION",
-    "image": "",
+    "image": "/uploads/the-unexpected-ii-cover-web.jpg",
     "caption": "The Unexpected — Episode Two"
   },
   "contact": {
