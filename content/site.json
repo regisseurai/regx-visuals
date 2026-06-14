@@ -5,7 +5,7 @@
     "title_line1": "The",
     "title_line2": "Unexpected",
     "tags": "Action · Sci-Fi · Lagos · 2026",
-    "poster_image": "/uploads/the-unexpected-ii-cover-web.jpg",
+    "poster_image": "",
     "play_video_id": "4s8UjaYg0SI",
     "trailer_video_id": "Y5s4vtN8-5Y"
   },
@@ -102,7 +102,9 @@
   "studio": {
     "label": "The Studio",
     "body": "REGX VISUALS is a Lagos film studio building blockbuster-scale African cinema with AI-first pipelines — one city, one universe, every frame intended.",
-    "signature": "A REGX VISUALS PRODUCTION"
+    "signature": "A REGX VISUALS PRODUCTION",
+    "image": "",
+    "caption": "The Unexpected — Episode Two"
   },
   "contact": {
     "label": "Next Drop",

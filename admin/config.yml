@@ -97,6 +97,8 @@ collections:
               - { label: "Section label", name: "label", widget: "string" }
               - { label: "Body text", name: "body", widget: "text" }
               - { label: "Signature", name: "signature", widget: "string" }
+              - { label: "Studio image (optional)", name: "image", widget: "image", required: false, hint: "Wide image ~1280x540. Leave empty to use the latest movie thumbnail." }
+              - { label: "Image caption", name: "caption", widget: "string", required: false }
 
           - label: "Contact"
             name: "contact"
