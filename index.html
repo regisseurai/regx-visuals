@@ -796,7 +796,14 @@
         if(h.eyebrow_lead!=null) document.getElementById('heroEyebrow').innerHTML = esc(h.eyebrow_lead)+' — <span>'+esc(h.eyebrow_emphasis)+'</span>';
         if(h.title_line1!=null) document.getElementById('heroTitle').innerHTML = esc(h.title_line1)+'\n<span class="line2">'+esc(h.title_line2)+'</span>';
         if(h.tags!=null) document.getElementById('heroTags').textContent = h.tags;
-        if(h.play_video_id) document.getElementById('heroBg').src = ytThumb(h.play_video_id);
+        var heroBg = document.getElementById('heroBg');
+        if(h.poster_image && h.poster_image.trim()){
+          heroBg.onerror = null;
+          heroBg.src = h.poster_image.trim();
+        } else if(h.play_video_id){
+          heroBg.onerror = function(){ this.onerror=null; this.src='https://img.youtube.com/vi/'+h.play_video_id+'/hqdefault.jpg'; };
+          heroBg.src = ytThumb(h.play_video_id);
+        }
         var play=document.getElementById('heroPlay'), tr=document.getElementById('heroTrailer');
         if(play) play.onclick=function(e){ playVideo(e, h.play_video_id); };
         if(tr){
@@ -810,8 +817,9 @@
         var track=document.getElementById('epTrack'); track.innerHTML='';
         (d.watch.episodes||[]).forEach(function(ep){
           var a=document.createElement('a'); a.className='ep'; a.href='#';
-          var thumb = ep.streaming && ep.video_id
-            ? '<div class="ep-thumb"><img src="'+ytThumb(ep.video_id)+'" alt="'+esc(ep.title)+' — '+esc(ep.tag)+'" loading="lazy" /></div>'
+          var poster = (ep.poster_image && ep.poster_image.trim()) ? ep.poster_image.trim() : (ep.video_id ? ytThumb(ep.video_id) : '');
+          var thumb = (poster)
+            ? '<div class="ep-thumb"><img src="'+poster+'" alt="'+esc(ep.title)+' — '+esc(ep.tag)+'" loading="lazy" /></div>'
             : '<div class="ep-thumb empty"><span>'+esc((ep.status||'Coming Soon').toUpperCase())+'</span></div>';
           a.innerHTML = '<div class="ep-left">'+thumb+
             '<span class="ep-no">'+esc(ep.tag)+'</span><span class="ep-title">'+esc(ep.title)+'</span></div>'+
