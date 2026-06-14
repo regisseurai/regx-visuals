@@ -193,44 +193,50 @@
   .burger.open span:nth-child(2){opacity:0}
   .burger.open span:nth-child(3){width:24px;transform:translateY(-7.5px) rotate(-45deg)}
 
-  /* episodes with thumbnails */
-  .ep{
-    display:flex;justify-content:space-between;align-items:center;gap:32px;
-    padding:28px 0;border-top:1px solid var(--line);
-    transition:padding-left .35s;cursor:pointer;
+  /* episodes as poster cards */
+  .ep-track{
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(280px, 1fr));
+    gap:18px;
   }
-  .ep:last-of-type{border-bottom:1px solid var(--line)}
-  .ep:hover{padding-left:20px}
-  .ep:hover .ep-title{color:var(--amber)}
-  .ep:hover .ep-thumb img{transform:scale(1.06)}
+  .ep{
+    position:relative;display:block;cursor:pointer;
+    border-radius:14px;overflow:hidden;
+    transition:transform .35s;
+  }
+  .ep:hover{transform:translateY(-4px)}
+  .ep:hover .ep-thumb img{transform:scale(1.05)}
+  .ep-left{display:block}
   .ep-thumb{
-    width:200px;aspect-ratio:16/9;flex-shrink:0;overflow:hidden;
-    background:#0C1216;
+    width:100%;aspect-ratio:16/9;overflow:hidden;
+    background:#0C1216;border:1px solid var(--line);border-radius:14px;
   }
   .ep-thumb img{
     width:100%;height:100%;object-fit:cover;
     transition:transform .5s ease;
-    filter:saturate(.9);
+    filter:saturate(.95);
   }
   .ep-thumb.empty{
     display:grid;place-items:center;
-    font-family:var(--mono);font-size:10px;letter-spacing:.3em;color:var(--grey);
-    border:1px solid var(--line);
+    font-family:var(--mono);font-size:11px;letter-spacing:.3em;color:var(--grey);
   }
-  .ep-left{display:flex;align-items:center;gap:32px;flex:1;min-width:0}
   .ep-no{
-    font-family:var(--mono);font-size:10px;color:var(--amber);letter-spacing:.18em;
-    text-transform:uppercase;flex-shrink:0;
+    position:absolute;top:12px;left:12px;z-index:2;
+    font-family:var(--mono);font-size:10px;color:var(--amber);letter-spacing:.16em;
+    text-transform:uppercase;white-space:nowrap;
+    background:rgba(7,10,12,.8);backdrop-filter:blur(4px);
     border:1px solid rgba(240,164,55,.4);
-    padding:5px 10px;border-radius:3px;
-    align-self:center;white-space:nowrap;
+    padding:5px 10px;border-radius:5px;
   }
-  .ep-title{
-    font-family:var(--display);font-size:clamp(24px,3.6vw,42px);
-    text-transform:uppercase;letter-spacing:.01em;transition:color .35s;
+  .ep-right{
+    position:absolute;top:12px;right:12px;z-index:2;
+    font-family:var(--mono);font-size:9px;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--grey);white-space:nowrap;
+    background:rgba(7,10,12,.8);backdrop-filter:blur(4px);
+    padding:5px 9px;border-radius:5px;
   }
-  .ep-right{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--grey);white-space:nowrap}
   .ep-right.live{color:var(--amber)}
+  .ep-title{display:none}                          /* poster speaks for itself */
 
   /* lightbox player */
   .lightbox{
@@ -350,16 +356,24 @@
   }
   .ab-center:active{transform:translateY(-8px) scale(.94)}
 
-  /* one sentence studio */
+  /* studio statement */
   #studio p{
-    font-size:clamp(22px, 3.2vw, 34px);
+    font-size:clamp(20px, 2.6vw, 30px);
     font-weight:300;
-    line-height:1.45;
-    max-width:880px;
+    line-height:1.5;
+    max-width:760px;
     color:var(--bone);
   }
   #studio p em{font-style:normal;color:var(--amber)}
-  #studio .sig{margin-top:48px}
+  #studio .sig{
+    margin-top:40px;
+    display:inline-flex;align-items:center;gap:16px;
+    font-family:var(--body);font-weight:600;font-size:11px;
+    letter-spacing:.4em;text-transform:uppercase;color:var(--amber);
+  }
+  #studio .sig::before{
+    content:'';width:42px;height:1px;background:var(--amber);opacity:.55;
+  }
 
   /* music: the score index */
   .track{
@@ -402,29 +416,36 @@
   }
   #learn .lede em{font-style:normal;color:var(--amber)}
   .course-grid{
-    display:grid;grid-template-columns:repeat(4,1fr);gap:16px;
+    display:grid;grid-template-columns:repeat(2,1fr);gap:18px;max-width:760px;
   }
   .course{
-    display:flex;flex-direction:column;align-items:flex-start;gap:16px;
-    padding:26px 22px;
-    border:1px solid var(--line);border-radius:14px;
-    background:rgba(255,255,255,.02);
+    display:flex;flex-direction:column;align-items:flex-start;gap:14px;
+    padding:24px 22px;min-height:180px;
+    border:1px solid var(--line);border-radius:16px;
+    background:rgba(255,255,255,.025);
     transition:border-color .3s, background .3s, transform .3s;
   }
-  .course:hover{border-color:rgba(240,164,55,.5);background:rgba(240,164,55,.04);transform:translateY(-3px)}
+  .course:hover{border-color:rgba(240,164,55,.5);background:rgba(240,164,55,.05);transform:translateY(-3px)}
+  .co-top{display:flex;align-items:center;justify-content:space-between;width:100%}
   .co-ic{
-    width:46px;height:46px;border-radius:11px;
+    width:42px;height:42px;border-radius:11px;
     display:grid;place-items:center;flex-shrink:0;
     background:rgba(240,164,55,.1);color:var(--amber);
   }
-  .co-ic svg{width:24px;height:24px}
-  .co-title{
-    font-family:var(--body);font-weight:500;font-size:16px;
-    letter-spacing:.01em;color:var(--bone);line-height:1.3;
-    flex:1;
+  .co-ic svg{width:22px;height:22px}
+  .co-badge{
+    font-family:var(--mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--grey);border:1px solid var(--line);border-radius:20px;padding:5px 11px;
   }
-  .co-right{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--grey)}
-  .co-right.open{color:var(--amber)}
+  .co-badge.open{color:var(--amber);border-color:rgba(240,164,55,.4)}
+  .co-title{
+    font-family:var(--body);font-weight:600;font-size:18px;
+    letter-spacing:.01em;color:var(--bone);line-height:1.25;
+    margin-top:auto;
+  }
+  .co-desc{
+    font-size:13px;color:var(--grey);line-height:1.45;
+  }
 
   /* ---- imagery system ---- */
   /* Every image slot is graded automatically: teal-amber wash + grain,
@@ -512,18 +533,18 @@
       display:flex;flex-direction:column;justify-content:flex-end;
       padding:0 0 30px;
       box-shadow:0 24px 60px rgba(0,0,0,.55);
-      border:1px solid rgba(142,151,160,.28);
+      border:none;
     }
-    .slide-bgs{border-radius:18px}
+    .slide-bgs{border-radius:18px;overflow:hidden}
     .slide-bg img{
-      opacity:.4;                                 /* dark, moody banner */
-      object-position:center 26%;
-      transform:none;
-      filter:saturate(.85) contrast(1.05);
+      opacity:.95;                                /* bright — the poster is the star */
+      object-position:center 22%;
+      transform:scale(1.05);                      /* bleed past edges — kills the hairline seam */
+      filter:saturate(1) contrast(1.03);
     }
     .slide-bg::after{
       background:
-        linear-gradient(to bottom, rgba(7,10,12,.5) 0%, rgba(7,10,12,.2) 38%, rgba(7,10,12,.65) 70%, rgba(7,10,12,.96) 100%);
+        linear-gradient(to bottom, rgba(7,10,12,.18) 0%, rgba(7,10,12,0) 30%, rgba(7,10,12,.5) 64%, rgba(7,10,12,.95) 100%);
     }
     /* corner brand mark inside the card */
     .bb-mark{
@@ -583,7 +604,7 @@
       background:rgba(7,10,12,.82);backdrop-filter:blur(4px);
       font-size:9px;padding:5px 9px;
     }
-    .ep-title{font-size:19px;line-height:1.05}
+    .ep-title{display:none}                       /* poster-style: the art is the card */
     .ep-right{
       position:absolute;top:10px;right:10px;z-index:2;
       font-size:8px;padding:4px 8px;border-radius:3px;
@@ -596,11 +617,13 @@
     .track{flex-direction:column;align-items:flex-start;gap:8px}
     .tk-right{gap:18px}
 
-    /* Learn: 2-up icon cards on mobile */
+    /* Learn: 2-up cards on mobile */
     #learn .lede{font-size:18px;text-align:left;margin-bottom:32px}
     .course-grid{grid-template-columns:1fr 1fr;gap:12px}
-    .course{padding:20px 16px;gap:12px}
-    .co-title{font-size:14px}
+    .course{padding:18px 15px;gap:12px;min-height:158px}
+    .co-title{font-size:15px}
+    .co-desc{font-size:12px}
+    .co-badge{font-size:8px;padding:4px 9px}
 
     #studio p{font-size:21px}
     .ep-album-links{flex-wrap:wrap;gap:18px;justify-content:center}
@@ -694,7 +717,7 @@
   <div class="wrap">
     <p class="mono sec-label" id="studioLabel">The Studio</p>
     <p id="studioBody">REGX VISUALS is a Lagos film studio building <em>blockbuster-scale African cinema</em> with AI-first pipelines — one city, one universe, every frame intended.</p>
-    <p class="mono sig" id="studioSig">A REGX VISUALS PRODUCTION</p>
+    <p class="sig" id="studioSig">A REGX VISUALS PRODUCTION</p>
     <div class="still studio-still">
       <img id="studioImg" src="https://img.youtube.com/vi/4s8UjaYg0SI/maxresdefault.jpg"
            alt="The Unexpected — signature frame" loading="lazy" />
@@ -851,10 +874,11 @@
         (d.learn.courses||[]).forEach(function(c){
           var a=document.createElement('a'); a.className='course'; a.href='#';
           var open = (c.status||'').toLowerCase()==='enroll' ? ' open' : '';
-          a.innerHTML='<span class="co-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">'+
+          a.innerHTML='<div class="co-top"><span class="co-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">'+
             (COURSE_ICONS[c.icon]||COURSE_ICONS.film)+'</svg></span>'+
+            '<span class="co-badge'+open+'">'+esc(c.status)+'</span></div>'+
             '<span class="co-title">'+esc(c.title)+'</span>'+
-            '<span class="co-right'+open+'">'+esc(c.status)+'</span>';
+            (c.desc?'<span class="co-desc">'+esc(c.desc)+'</span>':'');
           grid.appendChild(a);
         });
       }

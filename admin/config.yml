@@ -82,6 +82,7 @@ collections:
                 summary: "{{fields.title}}"
                 fields:
                   - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "desc", widget: "string", required: false, hint: "One short line under the title" }
                   - { label: "Button text", name: "status", widget: "string", hint: "Enroll, or Soon" }
                   - label: "Icon"
                     name: "icon"
