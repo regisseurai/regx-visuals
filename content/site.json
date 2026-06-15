@@ -43,6 +43,18 @@
         "poster_image": "",
         "status": "In Production",
         "streaming": false
+      },
+      {
+        "streaming": false,
+        "title": "The Silence Between Drums",
+        "tag": "EP 1",
+        "status": "In Production"
+      },
+      {
+        "streaming": false,
+        "tag": "EP1",
+        "title": "Gun Fire",
+        "status": "In Production"
       }
     ]
   },
