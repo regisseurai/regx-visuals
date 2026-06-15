@@ -9,6 +9,8 @@ backend:
   name: github
   repo: regisseurai/regx-visuals
   branch: main
+  base_url: https://regx-cms-login.regisseurai.workers.dev
+  auth_endpoint: /auth
 
 # Where uploaded images go
 media_folder: "uploads"
