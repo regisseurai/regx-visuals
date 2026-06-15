@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>REGX VISUALS</title>
 <meta name="description" content="REGX VISUALS — home of The Unexpected. A Lagos cinematic universe." />
-<meta name="theme-color" content="#070A0C" />
+<meta name="theme-color" content="#1B1D20" />
 <link rel="manifest" href="manifest.webmanifest" />
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
 <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png" />
@@ -87,6 +87,14 @@
   .nav-right{display:flex;gap:40px}
   .nav-right a{font-family:var(--mono);font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--grey);transition:color .3s}
   .nav-right a:hover{color:var(--bone)}
+  .nav-icons{display:none;align-items:center;gap:6px}
+  .nav-ic{
+    background:none;border:none;cursor:pointer;padding:8px;
+    color:var(--bone);display:grid;place-items:center;
+    transition:color .25s;
+  }
+  .nav-ic svg{width:23px;height:23px}
+  .nav-ic:active{color:var(--amber)}
 
   /* ---- hero: type and silence ---- */
   header{
@@ -404,7 +412,7 @@
     transform:translateY(-11px);                  /* sits lower, straddles the bar line */
   }
   .ab-center-btn{
-    width:56px;height:42px;border-radius:14px;
+    width:56px;height:38px;border-radius:13px;
     background:var(--amber);
     display:grid;place-items:center;
     box-shadow:0 5px 0 #BE7F22;                   /* darker amber base = 3D depth */
@@ -602,7 +610,8 @@
     .appbar{display:flex}
     .burger{display:none}
     .nav-right{display:none}
-    .nav-inner{justify-content:center;padding:16px 0 14px}
+    .nav-icons{display:flex}
+    .nav-inner{justify-content:space-between;align-items:center;padding:16px 0 14px}
     .logo-img{height:30px}
     nav{background:linear-gradient(rgba(7,10,12,.97), rgba(7,10,12,.55))}
     body{padding-bottom:74px}                    /* clear the fixed app bar */
@@ -618,7 +627,7 @@
       display:flex;flex-direction:column;justify-content:flex-end;
       padding:0 0 30px;
       box-shadow:0 24px 60px rgba(0,0,0,.55);
-      border:1px solid rgba(190,198,206,.45);     /* visible thin rounded edge */
+      border:none;                                /* no edge line */
     }
     .slide-bgs{border-radius:18px;overflow:hidden;inset:0;position:absolute}
     .slide-bg img{
@@ -747,8 +756,16 @@
       <a href="#episodes" onclick="closeMenu()">Watch</a>
       <a href="#music" onclick="closeMenu()">Music</a>
       <a href="#learn" onclick="closeMenu()">Learn</a>
-      <a href="#reels" onclick="closeMenu()">Reels</a>
+      <a href="#reels" onclick="closeMenu()">Shorts</a>
       <a href="#contact" onclick="closeMenu()">Contact</a>
+    </div>
+    <div class="nav-icons">
+      <button class="nav-ic" onclick="alert('REGX Academy — coming soon.')" aria-label="Academy">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg>
+      </button>
+      <a class="nav-ic" href="#contact" aria-label="Support">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg>
+      </a>
     </div>
   </div>
 </nav>
@@ -891,7 +908,7 @@
   <button class="ab-center" onclick="playVideo(event,'4s8UjaYg0SI')" aria-label="Watch latest">
     <span class="ab-center-btn">
       <svg viewBox="0 0 100 100" aria-hidden="true">
-        <g fill="#0A0D10" transform="translate(50,50) scale(0.52) translate(-50,-50)">
+        <g fill="#0A0D10" transform="translate(50,50) scale(0.575) translate(-50,-50)">
           <polygon points="26,30 42,30 74,70 58,70"/>
           <polygon points="95,7 53.1,53.3 5,93 46.9,46.7"/>
         </g>

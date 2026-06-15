@@ -2,7 +2,7 @@
    Caches the site shell so the app installs and opens instantly.
    Videos and Spotify always stream live from the network. */
 
-const CACHE = 'regx-v1';
+const CACHE = 'regx-v2';
 const SHELL = [
   './',
   './index.html',

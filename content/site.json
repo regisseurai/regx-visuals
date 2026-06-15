@@ -99,17 +99,31 @@
       }
     ]
   },
-  "studio": {
-    "label": "The Studio",
-    "body": "REGX VISUALS is a Lagos film studio building blockbuster-scale African cinema with AI-first pipelines — one city, one universe, every frame intended.",
-    "signature": "A REGX VISUALS PRODUCTION",
-    "image": "",
-    "caption": "The Unexpected — Episode Two"
-  },
   "contact": {
     "label": "Next Drop",
     "headline_line1": "Be there when",
     "headline_line2": "it surfaces.",
     "email": "regisseurai@gmail.com"
+  },
+  "reels": {
+    "label": "Shorts",
+    "items": [
+      {
+        "title": "",
+        "url": "https://youtube.com/shorts/bNadFGFsNTc"
+      },
+      {
+        "title": "",
+        "url": "https://youtube.com/shorts/IKZTm1j-Jsg"
+      },
+      {
+        "title": "",
+        "url": "https://youtube.com/shorts/nTOCpWE4Kpw"
+      },
+      {
+        "title": "",
+        "url": "https://youtube.com/shorts/EJXz4QccKeY"
+      }
+    ]
   }
 }

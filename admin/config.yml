@@ -92,15 +92,18 @@ collections:
                     options: ["film", "spark", "person", "layers"]
                     default: "film"
 
-          - label: "Studio"
-            name: "studio"
+          - label: "Shorts"
+            name: "reels"
             widget: "object"
             fields:
               - { label: "Section label", name: "label", widget: "string" }
-              - { label: "Body text", name: "body", widget: "text" }
-              - { label: "Signature", name: "signature", widget: "string" }
-              - { label: "Studio image (optional)", name: "image", widget: "image", required: false, hint: "Wide image ~1280x540. Leave empty to use the latest movie thumbnail." }
-              - { label: "Image caption", name: "caption", widget: "string", required: false }
+              - label: "Shorts (YouTube)"
+                name: "items"
+                widget: "list"
+                summary: "{{fields.url}}"
+                fields:
+                  - { label: "YouTube Short link", name: "url", widget: "string", hint: "Paste the full Short link, e.g. https://youtube.com/shorts/abc123" }
+                  - { label: "Caption (optional)", name: "title", widget: "string", required: false }
 
           - label: "Contact"
             name: "contact"
