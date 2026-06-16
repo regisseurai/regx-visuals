@@ -1,14 +1,14 @@
 {
   "hero": {
-    "poster_image": "",
-    "play_video_id": "4s8UjaYg0SI",
-    "trailer_video_id": "Y5s4vtN8-5Y",
-    "eyebrow_emphasis": "Episode Two",
     "eyebrow_lead": "Latest Release",
+    "eyebrow_emphasis": "Episode Two",
     "title_line1": "The",
     "title_line2": "Unexpected",
-    "poster_image_mobile": "/uploads/home-mobile.png",
-    "tags": "Action · Sci-Fi · Lagos · 2026"
+    "tags": "Action · Sci-Fi · Lagos · 2026",
+    "poster_image": "",
+    "poster_image_mobile": "",
+    "play_video_id": "4s8UjaYg0SI",
+    "trailer_video_id": "Y5s4vtN8-5Y"
   },
   "watch": {
     "label": "Watch — Now Streaming",
