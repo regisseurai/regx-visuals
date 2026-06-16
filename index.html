@@ -84,9 +84,15 @@
   .logo-img{
     height:34px;width:auto;display:block;
   }
-  .nav-right{display:flex;gap:40px}
+  .nav-right{display:flex;gap:40px;align-items:center}
   .nav-right a{font-family:var(--mono);font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--grey);transition:color .3s}
   .nav-right a:hover{color:var(--bone)}
+  .nav-support{
+    border:1px solid var(--grey);border-radius:999px;
+    padding:9px 20px;color:var(--bone)!important;
+    transition:border-color .25s, color .25s;
+  }
+  .nav-support:hover{border-color:var(--amber);color:var(--amber)!important}
   .nav-icons{display:none;align-items:center;gap:6px}
   .nav-ic{
     background:none;border:none;cursor:pointer;padding:8px;
@@ -509,7 +515,7 @@
   }
   #learn .lede em{font-style:normal;color:var(--amber)}
   .course-grid{
-    display:grid;grid-template-columns:repeat(2,1fr);gap:18px;max-width:760px;
+    display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:1040px;
   }
   .course{
     display:flex;flex-direction:column;align-items:flex-start;gap:14px;
@@ -755,7 +761,7 @@
       <a href="#episodes" onclick="closeMenu()">Watch</a>
       <a href="#music" onclick="closeMenu()">Music</a>
       <a href="#learn" onclick="closeMenu()">Learn</a>
-      <a href="#contact" onclick="closeMenu()">Contact</a>
+      <a href="#contact" class="nav-support" onclick="closeMenu()">Support</a>
     </div>
   </div>
 </nav>
