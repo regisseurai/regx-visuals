@@ -841,10 +841,10 @@
     <h3 class="enroll-title" id="enrollTitle">Enroll</h3>
     <p class="enroll-sub">Join the waitlist. We'll email you when this course opens.</p>
 
-    <form name="enroll" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="enrollForm" onsubmit="return submitEnroll(event)">
-      <input type="hidden" name="form-name" value="enroll" />
-      <p hidden><label>Don't fill this: <input name="bot-field" /></label></p>
+    <form action="https://formspree.io/f/mjgdldjk" method="POST" id="enrollForm" onsubmit="return submitEnroll(event)">
+      <p hidden aria-hidden="true"><label>Don't fill this: <input name="_gotcha" tabindex="-1" autocomplete="off" /></label></p>
       <input type="hidden" name="course" id="enrollCourse" value="" />
+      <input type="hidden" name="_subject" id="enrollSubject" value="New REGX enrollment" />
       <input class="enroll-input" type="text" name="name" placeholder="YOUR NAME" required />
       <input class="enroll-input" type="email" name="email" placeholder="YOUR@EMAIL.COM" required />
       <button class="enroll-submit" type="submit">Join the Waitlist</button>
@@ -1099,13 +1099,14 @@
     if(e.key === 'Escape'){ closeVideo(); closeMenu(); closeEnroll(); }
   });
 
-  /* ---------- Enroll popup (Netlify Forms) ---------- */
+  /* ---------- Enroll popup (Formspree) ---------- */
   function openEnroll(courseTitle, soon){
     var modal=document.getElementById('enrollModal');
     var card=modal.querySelector('.enroll-card');
     card.classList.remove('sent');
     document.getElementById('enrollForm').reset();
     document.getElementById('enrollCourse').value = courseTitle || 'Course';
+    document.getElementById('enrollSubject').value = 'New REGX enrollment — ' + (courseTitle || 'Course');
     document.getElementById('enrollTitle').textContent = courseTitle || 'Enroll';
     document.querySelector('.enroll-sub').textContent = soon
       ? "This course is coming soon — join the waitlist and we'll email you first."
@@ -1121,10 +1122,25 @@
   function submitEnroll(e){
     e.preventDefault();
     var form=e.target;
-    var data=new URLSearchParams(new FormData(form)).toString();
-    fetch('/', { method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'}, body:data })
-      .then(function(){ form.closest('.enroll-card').classList.add('sent'); })
-      .catch(function(){ form.closest('.enroll-card').classList.add('sent'); });
+    var btn=form.querySelector('.enroll-submit');
+    var card=form.closest('.enroll-card');
+    btn.disabled=true; btn.textContent='Sending…';
+    fetch(form.action, {
+      method:'POST',
+      headers:{ 'Accept':'application/json' },
+      body:new FormData(form)
+    })
+    .then(function(res){
+      if(res.ok){ card.classList.add('sent'); }
+      else { res.json().then(function(d){
+        btn.disabled=false; btn.textContent='Join the Waitlist';
+        alert((d && d.errors && d.errors[0] && d.errors[0].message) || 'Something went wrong — please try again.');
+      }).catch(function(){ btn.disabled=false; btn.textContent='Join the Waitlist'; alert('Something went wrong — please try again.'); }); }
+    })
+    .catch(function(){
+      btn.disabled=false; btn.textContent='Join the Waitlist';
+      alert('Network error — please check your connection and try again.');
+    });
     return false;
   }
   document.getElementById('enrollModal').addEventListener('click', function(e){
