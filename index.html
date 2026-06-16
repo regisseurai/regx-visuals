@@ -396,8 +396,7 @@
     display:none;
     align-items:flex-end;justify-content:space-around;
     height:72px;padding:0 8px 9px;
-    background:rgba(7,10,12,.98);
-    backdrop-filter:blur(10px);
+    background:#1B1D20;                            /* matches phone system nav + theme-color so they blend */
     border-top:1px solid var(--line);
   }
   .ab-item{
@@ -415,7 +414,7 @@
     flex:1;padding:0;
     color:var(--grey);font-family:var(--mono);font-size:8.5px;letter-spacing:.12em;
     text-transform:uppercase;
-    transform:translateY(-15px);                  /* pops up above the bar like Higgsfield */
+    transform:translateY(-18px);                  /* pops up above the bar like Higgsfield */
   }
   .ab-center-btn{
     width:56px;height:38px;border-radius:13px;
@@ -954,9 +953,13 @@
         if(h.title_line1!=null) document.getElementById('heroTitle').innerHTML = esc(h.title_line1)+'\n<span class="line2">'+esc(h.title_line2)+'</span>';
         if(h.tags!=null) document.getElementById('heroTags').textContent = h.tags;
         var heroBg = document.getElementById('heroBg');
-        if(h.poster_image && h.poster_image.trim()){
+        var isMobile = window.matchMedia('(max-width: 760px)').matches;
+        var deskImg = (h.poster_image||'').trim();
+        var mobImg = (h.poster_image_mobile||'').trim();
+        var chosen = isMobile ? (mobImg || deskImg) : (deskImg || mobImg);
+        if(chosen){
           heroBg.onerror = null;
-          heroBg.src = h.poster_image.trim();
+          heroBg.src = chosen;
         } else if(h.play_video_id){
           heroBg.onerror = function(){ this.onerror=null; this.src='https://img.youtube.com/vi/'+h.play_video_id+'/hqdefault.jpg'; };
           heroBg.src = ytThumb(h.play_video_id);

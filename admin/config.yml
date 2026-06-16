@@ -36,7 +36,8 @@ collections:
               - { label: "Title line 1", name: "title_line1", widget: "string", hint: "e.g. The" }
               - { label: "Title line 2 (outlined)", name: "title_line2", widget: "string", hint: "e.g. Unexpected" }
               - { label: "Genre tags", name: "tags", widget: "string", hint: "e.g. Action · Sci-Fi · Lagos · 2026" }
-              - { label: "Poster image (optional)", name: "poster_image", widget: "image", required: false, hint: "Upload a custom poster. Best: tall portrait ~1080x1350. Leave empty to use the YouTube thumbnail instead." }
+              - { label: "Poster image — DESKTOP (optional)", name: "poster_image", widget: "image", required: false, hint: "Wide/landscape banner for computers (~1600x900). Leave empty to use the YouTube thumbnail." }
+              - { label: "Poster image — MOBILE (optional)", name: "poster_image_mobile", widget: "image", required: false, hint: "Tall/portrait banner for phones (~1080x1350). Leave empty to fall back to the desktop image." }
               - { label: "Play — YouTube video ID", name: "play_video_id", widget: "string", hint: "The part after youtu.be/ — e.g. 4s8UjaYg0SI" }
               - { label: "Trailer — YouTube video ID", name: "trailer_video_id", widget: "string", required: false, hint: "Leave blank to hide the Trailer button" }
 
