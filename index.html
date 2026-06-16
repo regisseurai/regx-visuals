@@ -409,7 +409,7 @@
     flex:1;padding:0;
     color:var(--grey);font-family:var(--mono);font-size:8.5px;letter-spacing:.12em;
     text-transform:uppercase;
-    transform:translateY(-11px);                  /* sits lower, straddles the bar line */
+    transform:translateY(-15px);                  /* pops up above the bar like Higgsfield */
   }
   .ab-center-btn{
     width:56px;height:38px;border-radius:13px;
@@ -610,8 +610,7 @@
     .appbar{display:flex}
     .burger{display:none}
     .nav-right{display:none}
-    .nav-icons{display:flex}
-    .nav-inner{justify-content:space-between;align-items:center;padding:16px 0 14px}
+    .nav-inner{justify-content:center;padding:16px 0 14px}
     .logo-img{height:30px}
     nav{background:linear-gradient(rgba(7,10,12,.97), rgba(7,10,12,.55))}
     body{padding-bottom:74px}                    /* clear the fixed app bar */
@@ -619,7 +618,7 @@
 
     /* ---- HERO: Netflix-style billboard card ---- */
     header{
-      min-height:80svh;
+      min-height:70svh;
       margin:72px 12px 0;
       border-radius:18px;
       overflow:hidden;
@@ -627,7 +626,7 @@
       display:flex;flex-direction:column;justify-content:flex-end;
       padding:0 0 30px;
       box-shadow:0 24px 60px rgba(0,0,0,.55);
-      border:none;                                /* no edge line */
+      border:1px solid rgba(255,255,255,.16);     /* subtle outline like the Netflix card */
     }
     .slide-bgs{border-radius:18px;overflow:hidden;inset:0;position:absolute}
     .slide-bg img{
@@ -756,16 +755,7 @@
       <a href="#episodes" onclick="closeMenu()">Watch</a>
       <a href="#music" onclick="closeMenu()">Music</a>
       <a href="#learn" onclick="closeMenu()">Learn</a>
-      <a href="#reels" onclick="closeMenu()">Shorts</a>
       <a href="#contact" onclick="closeMenu()">Contact</a>
-    </div>
-    <div class="nav-icons">
-      <button class="nav-ic" onclick="alert('REGX Academy — coming soon.')" aria-label="Academy">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg>
-      </button>
-      <a class="nav-ic" href="#contact" aria-label="Support">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg>
-      </a>
     </div>
   </div>
 </nav>
@@ -819,13 +809,6 @@
       <a id="albumLink" href="#" target="_blank" rel="noopener">Full EP on Spotify ↗</a>
       <a id="artistLink" href="#" target="_blank" rel="noopener">Follow REGX ↗</a>
     </div>
-  </div>
-</section>
-
-<section id="reels">
-  <div class="wrap">
-    <p class="mono sec-label" id="reelsLabel">Shorts</p>
-    <div class="reel-track" id="reelTrack"></div>
   </div>
 </section>
 
@@ -908,7 +891,7 @@
   <button class="ab-center" onclick="playVideo(event,'4s8UjaYg0SI')" aria-label="Watch latest">
     <span class="ab-center-btn">
       <svg viewBox="0 0 100 100" aria-hidden="true">
-        <g fill="#0A0D10" transform="translate(50,50) scale(0.575) translate(-50,-50)">
+        <g fill="#0A0D10" transform="translate(50,50) scale(0.62) translate(-50,-50)">
           <polygon points="26,30 42,30 74,70 58,70"/>
           <polygon points="95,7 53.1,53.3 5,93 46.9,46.7"/>
         </g>
@@ -920,9 +903,9 @@
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 2.6 9 2.6 12 0v-5"/></svg>
     <span>Learn</span>
   </a>
-  <a class="ab-item" href="#reels">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M3 9h18M9 4 7 9M15 4l-2 5"/><path d="m11 12 4 2.5-4 2.5z" fill="currentColor"/></svg>
-    <span>Reels</span>
+  <a class="ab-item" href="#contact">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg>
+    <span>Support</span>
   </a>
 </nav>
 
@@ -1027,21 +1010,6 @@
             (c.desc?'<span class="co-desc">'+esc(c.desc)+'</span>':'');
           a.onclick=function(e){ e.preventDefault(); openEnroll(c.title, soon); };
           grid.appendChild(a);
-        });
-      }
-      /* reels (YouTube Shorts) */
-      if (d.reels){
-        document.getElementById('reelsLabel').textContent = d.reels.label || 'Reels';
-        var rt=document.getElementById('reelTrack'); rt.innerHTML='';
-        (d.reels.items||[]).forEach(function(r){
-          var id = ytShortId(r.url || r.video_id || '');
-          if(!id) return;
-          var a=document.createElement('a'); a.className='reel'; a.href='#';
-          a.innerHTML='<div class="reel-thumb"><img src="https://img.youtube.com/vi/'+id+'/hqdefault.jpg" alt="'+esc(r.title||'Reel')+'" loading="lazy" />'+
-            '<span class="reel-play">▶</span></div>'+
-            (r.title?'<span class="reel-cap">'+esc(r.title)+'</span>':'');
-          a.onclick=function(e){ playShort(e, id); };
-          rt.appendChild(a);
         });
       }
       /* contact */

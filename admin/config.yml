@@ -92,19 +92,6 @@ collections:
                     options: ["film", "spark", "person", "layers"]
                     default: "film"
 
-          - label: "Shorts"
-            name: "reels"
-            widget: "object"
-            fields:
-              - { label: "Section label", name: "label", widget: "string" }
-              - label: "Shorts (YouTube)"
-                name: "items"
-                widget: "list"
-                summary: "{{fields.url}}"
-                fields:
-                  - { label: "YouTube Short link", name: "url", widget: "string", hint: "Paste the full Short link, e.g. https://youtube.com/shorts/abc123" }
-                  - { label: "Caption (optional)", name: "title", widget: "string", required: false }
-
           - label: "Contact"
             name: "contact"
             widget: "object"

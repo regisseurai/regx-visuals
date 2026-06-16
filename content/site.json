@@ -5,7 +5,7 @@
     "title_line1": "The",
     "title_line2": "Unexpected",
     "tags": "Action · Sci-Fi · Lagos · 2026",
-    "poster_image": "/uploads/the-unexpected-ii-cover-web.jpg",
+    "poster_image": "",
     "play_video_id": "4s8UjaYg0SI",
     "trailer_video_id": "Y5s4vtN8-5Y"
   },
@@ -43,18 +43,6 @@
         "poster_image": "",
         "status": "In Production",
         "streaming": false
-      },
-      {
-        "streaming": false,
-        "title": "The Silence Between Drums",
-        "tag": "EP 1",
-        "status": "In Production"
-      },
-      {
-        "streaming": false,
-        "tag": "EP 1",
-        "title": "Gun Fire",
-        "status": "In Production"
       }
     ]
   },
@@ -108,6 +96,18 @@
         "desc": "Build an episodic world like The Unexpected.",
         "status": "Soon",
         "icon": "layers"
+      },
+      {
+        "title": "Editing",
+        "desc": "Cut, pace, and grade like a feature film.",
+        "status": "Enroll",
+        "icon": "film"
+      },
+      {
+        "title": "Storytelling",
+        "desc": "Structure stories that hold an audience.",
+        "status": "Enroll",
+        "icon": "spark"
       }
     ]
   },
@@ -116,26 +116,5 @@
     "headline_line1": "Be there when",
     "headline_line2": "it surfaces.",
     "email": "regisseurai@gmail.com"
-  },
-  "reels": {
-    "label": "Shorts",
-    "items": [
-      {
-        "title": "",
-        "url": "https://youtube.com/shorts/bNadFGFsNTc"
-      },
-      {
-        "title": "",
-        "url": "https://youtube.com/shorts/IKZTm1j-Jsg"
-      },
-      {
-        "title": "",
-        "url": "https://youtube.com/shorts/nTOCpWE4Kpw"
-      },
-      {
-        "title": "",
-        "url": "https://youtube.com/shorts/EJXz4QccKeY"
-      }
-    ]
   }
 }
