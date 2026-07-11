@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Book a Session — TooAmple Studios</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Manrope:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" href="Images/tooample-badge.png">
+<script src="https://js.paystack.co/v1/inline.js"></script>
+</head>
+<body>
+<div class="grain"></div>
+<header id="hdr">
+  <div class="wrap nav">
+    <a class="brand" href="index.html#top">
+      <img class="brand-word" src="Images/ta-wordmark.png" alt="TooAmple" />
+    </a>
+    <nav class="nav-links">
+      <a href="index.html#services">Services</a>
+      <a href="about.html">About</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="index.html#pricing">Packages</a>
+      <a href="academy.html" class="btn btn-outline" style="padding:11px 20px">Academy</a>
+      <a href="book.html" class="btn btn-gold" style="padding:11px 20px">Book a session <span class="arr">→</span></a>
+    </nav>
+    <button class="menu-btn" onclick="document.querySelector('.nav-links').style.display='flex'">Menu</button>
+  </div>
+</header>
+
+<!-- mobile app bottom bar -->
+<div class="mobile-bar">
+  <a href="index.html" class="mob-ico" aria-label="Home">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/><path d="M9 21V12h6v9"/></svg>
+    Home
+  </a>
+  <a href="about.html" class="mob-ico" aria-label="About">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+    About
+  </a>
+  <div class="mob-cta">
+    <a href="academy.html" class="acad">Academy</a>
+    <a href="book.html" class="bookings">Bookings</a>
+  </div>
+  <a href="portfolio.html" class="mob-ico" aria-label="Portfolio">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10" r="1.6"/><path d="M21 16l-5-5-5 5-2-2-5 5"/></svg>
+    Portfolio
+  </a>
+  <a href="https://regxvisuals.com" target="_blank" rel="noopener" class="mob-ico" aria-label="Regx AI">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 5l14 14M19 5L5 19"/></svg>
+    Regx AI
+  </a>
+</div>
+<!-- PRICING -->
+<section class="section pricing subpage" id="pricing">
+  <div class="wrap">
+    <div class="shead reveal">
+      <div>
+        <span class="eyebrow">Investment</span>
+        <h2 style="margin-top:20px">Packages &amp; pricing.</h2>
+      </div>
+      <p class="lead sub">Transparent, all-inclusive packages. Custom quotes available for multi-day productions.</p>
+    </div>
+
+    <div class="reveal">
+      <div class="tabs">
+        <button class="tab active" data-tab="photo" onclick="switchTab('photo')">Photography</button>
+        <button class="tab" data-tab="video" onclick="switchTab('video')">Cinematography</button>
+      </div>
+    </div>
+
+    <!-- PHOTOGRAPHY (with sub-menu) -->
+    <div id="photo">
+      <div class="subtabs">
+        <button class="subtab active" data-sub="studio" onclick="switchSub('photo','studio')">Studio Photography</button>
+        <button class="subtab" data-sub="prewed" onclick="switchSub('photo','prewed')">Pre-Wedding</button>
+        <button class="subtab" data-sub="location" onclick="switchSub('photo','location')">Location Shoot</button>
+        <button class="subtab" data-sub="wedding" onclick="switchSub('photo','wedding')">Wedding</button>
+      </div>
+
+      <!-- Studio Photography -->
+      <div class="price-grid sub-pane" id="studio">
+        <div class="plan">
+          <span class="cat">Studio · 1 Outfit</span>
+          <div class="pname">Single Look</div>
+          <p class="desc">One styled outfit, studio-lit and directed.</p>
+          <div class="amt"><span class="cur">₦</span>100,000</div>
+          <div class="per">4 edited copies</div>
+          <ul>
+            <li>1 outfit / look</li>
+            <li>4 fully-edited high-res copies</li>
+            <li>Studio lighting &amp; direction</li>
+            <li>Online gallery delivery</li>
+          </ul>
+          <div class="pbtn"><a href="javascript:void(0)" onclick="openBookModal('Studio — Single Look (1 outfit, 4 copies) — ₦100,000')" class="btn btn-ghost">Select</a></div>
+        </div>
+
+        <div class="plan feat">
+          <span class="badge">Most booked</span>
+          <span class="cat">Studio · 2 Outfits</span>
+          <div class="pname">Double Look</div>
+          <p class="desc">Two outfits for more range and variety.</p>
+          <div class="amt"><span class="cur">₦</span>200,000</div>
+          <div class="per">8 edited copies</div>
+          <ul>
+            <li>2 outfits / looks</li>
+            <li>8 fully-edited high-res copies</li>
+            <li>Multiple backdrops</li>
+            <li>Studio lighting &amp; direction</li>
+            <li>Online gallery delivery</li>
+          </ul>
+          <div class="pbtn"><a href="javascript:void(0)" onclick="openBookModal('Studio — Double Look (2 outfits, 8 copies) — ₦200,000')" class="btn btn-gold">Select <span class="arr">→</span></a></div>
+        </div>
+
+        <div class="plan">
+          <span class="cat">Studio · 3 Outfits</span>
+          <div class="pname">Triple Look</div>
+          <p class="desc">Three outfits — the full studio session.</p>
+          <div class="amt"><span class="cur">₦</span>280,000</div>
+          <div class="per">12 edited copies</div>
+          <ul>
+            <li>3 outfits / looks</li>
+            <li>12 fully-edited high-res copies</li>
+            <li>Multiple backdrops &amp; setups</li>
+            <li>Priority retouching</li>
+            <li>Online gallery delivery</li>
+          </ul>
+          <div class="pbtn"><a href="javascript:void(0)" onclick="openBookModal('Studio — Triple Look (3 outfits, 12 copies) — ₦280,000')" class="btn btn-ghost">Select</a></div>
+        </div>
+      </div>
+
+      <!-- Pre-Wedding -->
+      <div class="price-grid sub-pane" id="prewed" style="display:none">
+        <div class="plan">
+          <span class="cat">Pre-Wedding · 1 Location</span>
+          <div class="pname">Half-Day Story</div>
+          <p class="desc">One location, an intimate couple session.</p>
+          <div class="amt"><span class="cur">₦</span>300,000</div>
+          <div class="per">40 edited images</div>
+          <ul>
+            <li>1 location</li>
+            <li>Up to 3 hours</li>
+            <li>2 outfit changes</li>
+            <li>40 edited images</li>
+            <li>Online gallery</li>
+          </ul>
+          <div class="pbtn"><a href="javascript:void(0)" onclick="openBookModal('Pre-Wedding — Half-Day Story — ₦300,000')" class="btn btn-ghost">Select</a></div>
+        </div>
+
+        <div class="plan feat">
+          <span class="badge">Most booked</span>
+          <span class="cat">Pre-Wedding · 2 Locations</span>
+          <div class="pname">Full Story</div>
+          <p class="desc">Two locations, fully styled and directed.</p>
+          <div class="amt"><span class="cur">₦</span>450,000</div>
+          <div class="per">60 edited images</div>
+          <ul>
+            <li>2 locations</li>
+            <li>Half-day coverage</li>
+            <li>Styling direction</li>
+            <li>60 edited images</li>
+            <li>60-sec teaser reel</li>
+          </ul>
+          <div class="pbtn"><a href="javascript:void(0)" onclick="openBookModal('Pre-Wedding — Full Story — ₦450,000')" class="btn btn-gold">Select <span class="arr">→</span></a></div>
+        </div>
+
+        <div class="plan">
+          <span class="cat">Pre-Wedding · 3 Locations</span>
+          <div class="pname">Grand Story</div>
+          <p class="desc">A cinematic, full-day love-story production.</p>
+          <div class="amt"><span class="cur">₦</span>650,000</div>
+          <div class="per">100 edited images</div>
+          <ul>
+            <li>3 locations</li>
+            <li>Full-day coverage</li>
+            <li>100 edited images</li>
+            <li>Cinematic teaser film</li>
+            <li>Same-week sneak peek</li>
+          </ul>
+          <div class="pbtn"><a href="javascript:void(0)" onclick="openBookModal('Pre-Wedding — Grand Story — ₦650,000')" class="btn btn-ghost">Select</a></div>
+        </div>
+      </div>
+
+      <!-- Location Shoot (placeholder pricing) -->
+      <div class="price-grid sub-pane" id="location" style="display:none">
+        <div class="plan">
+          <span class="cat">Location · 1 Spot</span>
+          <div class="pname">Single Location</div>
+          <p class="desc">One outdoor or on-site location.</p>
+          <div class="amt"><span class="cur">₦</span>150,000</div>
+          <div class="per">6 edited copies</div>
+          <ul>
+            <li>1 location</li>
+            <li>1 outfit</li>
+            <li>Up to 2 hours</li>
+            <li>6 edited copies</li>
+            <li>Online gallery</li>
+          </ul>
+          <div class="pbtn"><a href="javascript:void(0)" onclick="openBookModal('Location — Single Location — ₦150,000')" class="btn btn-ghost">Select</a></div>
+        </div>
+
+        <div class="plan feat">
+          <span class="badge">Most booked</span>
+          <span class="cat">Location · 2 Spots</span>
+          <div class="pname">Two Locations</div>
+          <p class="desc">Two locations in a single session.</p>
+          <div class="amt"><span class="cur">₦</span>250,000</div>
+          <div class="per">12 edited copies</div>
+          <ul>
+            <li>2 locations</li>
+            <li>2 outfits</li>
+            <li>Half-day</li>
+            <li>12 edited copies</li>
+            <li>Travel within Lagos</li>
+          </ul>
+          <div class="pbtn"><a href="javascript:void(0)" onclick="openBookModal('Location — Two Locations — ₦250,000')" class="btn btn-gold">Select <span class="arr">→</span></a></div>
+        </div>
+
+        <div class="plan">
+          <span class="cat">Location · 3 Spots</span>
+          <div class="pname">Premium Tour</div>
+          <p class="desc">A multi-location editorial day.</p>
+          <div class="amt"><span class="cur">₦</span>380,000</div>
+          <div class="per">20 edited copies</div>
+          <ul>
+            <li>3 locations</li>
+            <li>3 outfits</li>
+            <li>Full-day</li>
+            <li>20 edited copies</li>
+            <li>Priority retouching</li>
+          </ul>
+          <div class="pbtn"><a href="javascript:void(0)" onclick="openBookModal('Location — Premium Tour — ₦380,000')" class="btn btn-ghost">Select</a></div>
+        </div>
+        <p class="pane-note">Location prices are placeholders — update anytime.</p>
+      </div>
+
+      <!-- Wedding (Photography) -->
+      <div class="price-grid sub-pane" id="wedding" style="display:none">
+        <p class="group-head">Photography only</p>
+        <div class="plan">
+          <span class="cat">Wedding · Bronze</span>
+          <div class="pname">Bronze</div>
+          <p class="desc">Essential wedding-day photography.</p>
+          <div class="amt"><span class="cur">₦</span>400,000</div>
+          <div class="per">Photo coverage</div>
+          <ul>
+            <li>1 photographer</li>
+            <li>Up to 6 hours coverage</li>
+            <li>150 edited high-res images</li>
+            <li>Private online gallery</li>
+          </ul>
+          <div class="pbtn"><a href="javascript:void(0)" onclick="openBookModal('Wedding Photo — Bronze — ₦400,000')" class="btn btn-ghost">Select</a></div>
+        </div>
+        <div class="plan feat">
+          <span class="badge">Most booked</span>
+          <span class="cat">Wedding · Silver</span>
+          <div class="pname">Silver</div>
+          <p class="desc">Two shooters for fuller coverage.</p>
+          <div class="amt"><span class="cur">₦</span>800,000</div>
+          <div class="per">Photo coverage</div>
+          <ul>
+            <li>2 photographers</li>
+            <li>Up to 10 hours coverage</li>
+            <li>300 edited high-res images</li>
+            <li>Premium printed album</li>
+            <li>Private online gallery</li>
+          </ul>
+          <div class="pbtn"><a href="javascript:void(0)" onclick="openBookModal('Wedding Photo — Silver — ₦800,000')" class="btn btn-gold">Select <span class="arr">→</span></a></div>
+        </div>
+        <div class="plan">
+          <span class="cat">Wedding · Gold</span>
+          <div class="pname">Gold</div>
+          <p class="desc">The complete photography experience.</p>
+          <div class="amt"><span class="cur">₦</span>1,000,000</div>
+          <div class="per">Photo coverage</div>
+          <ul>
+            <li>2 photographers + assistant</li>
+            <li>Full-day coverage</li>
+            <li>500+ edited high-res images</li>
+            <li>Premium album + framed prints</li>
+            <li>Next-day sneak peek</li>
+          </ul>
+          <div class="pbtn"><a href="javascript:void(0)" onclick="openBookModal('Wedding Photo — Gold — ₦1,000,000')" class="btn btn-ghost">Select</a></div>
+        </div>
+
+        <p class="group-head divider">Photo + Video — complete coverage</p>
+        <div class="plan">
+          <span class="cat">Complete · Bronze</span>
+          <div class="pname">Bronze</div>
+          <p class="desc">Photo &amp; film, the essentials.</p>
+          <div class="amt"><span class="cur">₦</span>800,000</div>
+          <div class="per">Photo + Video</div>
+          <ul>
+            <li>1 photographer + 1 cinematographer</li>
+            <li>Up to 6 hours coverage</li>
+            <li>150 edited images</li>
+            <li>3-min highlight film</li>
+          </ul>
+          <div class="pbtn"><a href="javascript:void(0)" onclick="openBookModal('Wedding Photo+Video — Bronze — ₦800,000')" class="btn btn-ghost">Select</a></div>
+        </div>
+        <div class="plan feat">
+          <span class="badge">Best value</span>
+          <span class="cat">Complete · Silver</span>
+          <div class="pname">Silver</div>
+          <p class="desc">Fuller photo &amp; film coverage.</p>
+          <div class="amt"><span class="cur">₦</span>1,000,000</div>
+          <div class="per">Photo + Video</div>
+          <ul>
+            <li>2 photographers + 1 cinematographer</li>
+            <li>Up to 10 hours coverage</li>
+            <li>300 edited images</li>
+            <li>5-min film + teaser</li>
+            <li>Premium album</li>
+          </ul>
+          <div class="pbtn"><a href="javascript:void(0)" onclick="openBookModal('Wedding Photo+Video — Silver — ₦1,000,000')" class="btn btn-gold">Select <span class="arr">→</span></a></div>
+        </div>
+        <div class="plan">
+          <span class="cat">Complete · Gold</span>
+          <div class="pname">Gold</div>
+          <p class="desc">Full crew, the signature package.</p>
+          <div class="amt"><span class="cur">₦</span>1,500,000</div>
+          <div class="per">Photo + Video</div>
+          <ul>
+            <li>2 photographers + 2 cinematographers</li>
+            <li>Full-day coverage</li>
+            <li>500+ edited images</li>
+            <li>7-min feature film + teaser</li>
+            <li>Drone coverage + premium album</li>
+          </ul>
+          <div class="pbtn"><a href="javascript:void(0)" onclick="openBookModal('Wedding Photo+Video — Gold — ₦1,500,000')" class="btn btn-ghost">Select</a></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CINEMATOGRAPHY (with sub-menu) -->
+    <div id="video" style="display:none">
+      <div class="subtabs">
+        <button class="subtab active" data-sub="music" onclick="switchSub('video','music')">Music Video Shoot</button>
+        <button class="subtab" data-sub="commercial" onclick="switchSub('video','commercial')">Commercial Shoot</button>
+        <button class="subtab" data-sub="weddingcov" onclick="switchSub('video','weddingcov')">Wedding Coverage</button>
+      </div>
+
+      <!-- Music Video Shoot -->
+      <div class="price-grid sub-pane" id="music">
+        <div class="plan">
+          <span class="cat">Music · Viral</span>
+          <div class="pname">Viral Video</div>
+          <p class="desc">Short-form vertical built to travel.</p>
+          <div class="amt"><span class="cur">₦</span>350,000</div>
+          <div class="per">Per video</div>
+          <ul>
+            <li>1 location, single setup</li>
+            <li>Vertical / short-form edit</li>
+            <li>Fast turnaround</li>
+            <li>Colour grade</li>
+          </ul>
+          <div class="pbtn"><a href="javascript:void(0)" onclick="openBookModal('Music — Viral Video — ₦350,000')" class="btn btn-ghost">Select</a></div>
+        </div>
+        <div class="plan">
+          <span class="cat">Music · Visualizer</span>
+          <div class="pname">Visualizer</div>
+          <p class="desc">Looping, lyric-friendly visual piece.</p>
+          <div class="amt"><span class="cur">₦</span>250,000</div>
+          <div class="per">Per video</div>
+          <ul>
+            <li>Single concept / setup</li>
+            <li>Looped or animated visual</li>
+            <li>Lyric-ready</li>
+            <li>Colour grade</li>
+          </ul>
+          <div class="pbtn"><a href="javascript:void(0)" onclick="openBookModal('Music — Visualizer — ₦250,000')" class="btn btn-ghost">Select</a></div>
+        </div>
+        <div class="plan feat">
+          <span class="badge">Signature</span>
+          <span class="cat">Music · Official</span>
+          <div class="pname">Official Music Video</div>
+          <p class="desc">Full-concept, multi-scene production.</p>
+          <div class="amt"><span class="cur">₦</span>1,200,000</div>
+          <div class="per">Per video</div>
+          <ul>
+            <li>Concept, treatment &amp; storyboard</li>
+            <li>Full crew &amp; multiple locations</li>
+            <li>Talent &amp; styling direction</li>
+            <li>Edit, grade &amp; sound design</li>
+          </ul>
+          <div class="pbtn"><a href="javascript:void(0)" onclick="openBookModal('Music — Official Video — ₦1,200,000')" class="btn btn-gold">Select <span class="arr">→</span></a></div>
+        </div>
+        <p class="pane-note">Music video prices are placeholders — update anytime.</p>
+      </div>
+
+      <!-- Commercial Shoot -->
+      <div class="price-grid sub-pane" id="commercial" style="display:none">
+        <div class="plan">
+          <span class="cat">Commercial · Promo</span>
+          <div class="pname">Promo / Event Film</div>
+          <p class="desc">Cinematic film for launches &amp; events.</p>
+          <div class="amt"><span class="cur">₦</span>450,000</div>
+          <div class="per">Per shoot · up to 6 hrs</div>
+          <ul>
+            <li>Single cinematographer</li>
+            <li>Up to 6 hours coverage</li>
+            <li>60–90 sec film</li>
+            <li>Licensed track &amp; grade</li>
+          </ul>
+          <div class="pbtn"><a href="javascript:void(0)" onclick="openBookModal('Commercial — Promo / Event — ₦450,000')" class="btn btn-ghost">Select</a></div>
+        </div>
+        <div class="plan feat">
+          <span class="badge">Most booked</span>
+          <span class="cat">Commercial · Brand</span>
+          <div class="pname">Brand Commercial</div>
+          <p class="desc">Concept-led commercial for brands.</p>
+          <div class="amt"><span class="cur">₦</span>1,200,000</div>
+          <div class="per">1–2 day shoot</div>
+          <ul>
+            <li>Concept &amp; production crew</li>
+            <li>1–2 day shoot</li>
+            <li>30–60 sec hero + cutdowns</li>
+            <li>Grade &amp; sound design</li>
+          </ul>
+          <div class="pbtn"><a href="javascript:void(0)" onclick="openBookModal('Commercial — Brand Commercial — ₦1,200,000')" class="btn btn-gold">Select <span class="arr">→</span></a></div>
+        </div>
+        <div class="plan">
+          <span class="cat">Commercial · Campaign</span>
+          <div class="pname">Full Campaign</div>
+          <p class="desc">End-to-end campaign production.</p>
+          <div class="amt"><span class="cur">₦</span>2,500,000</div>
+          <div class="per">Per production · custom</div>
+          <ul>
+            <li>Script, storyboard &amp; direction</li>
+            <li>Full crew, talent &amp; locations</li>
+            <li>Multi-deliverable suite</li>
+            <li>Usage &amp; licensing included</li>
+          </ul>
+          <div class="pbtn"><a href="javascript:void(0)" onclick="openBookModal('Commercial — Full Campaign — ₦2,500,000')" class="btn btn-ghost">Select</a></div>
+        </div>
+        <p class="pane-note">Commercial prices are placeholders — update anytime.</p>
+      </div>
+
+      <!-- Wedding Coverage (Video) -->
+      <div class="price-grid sub-pane" id="weddingcov" style="display:none">
+        <div class="plan">
+          <span class="cat">Coverage · Bronze</span>
+          <div class="pname">Bronze</div>
+          <p class="desc">Essential wedding film coverage.</p>
+          <div class="amt"><span class="cur">₦</span>500,000</div>
+          <div class="per">Video coverage</div>
+          <ul>
+            <li>1 cinematographer</li>
+            <li>Up to 6 hours coverage</li>
+            <li>3-min highlight film</li>
+            <li>Licensed track &amp; grade</li>
+          </ul>
+          <div class="pbtn"><a href="javascript:void(0)" onclick="openBookModal('Wedding Video — Bronze — ₦500,000')" class="btn btn-ghost">Select</a></div>
+        </div>
+        <div class="plan feat">
+          <span class="badge">Most booked</span>
+          <span class="cat">Coverage · Silver</span>
+          <div class="pname">Silver</div>
+          <p class="desc">Two-person crew, fuller film.</p>
+          <div class="amt"><span class="cur">₦</span>900,000</div>
+          <div class="per">Video coverage</div>
+          <ul>
+            <li>2-person film crew</li>
+            <li>Up to 10 hours coverage</li>
+            <li>5-min film + teaser</li>
+            <li>Gimbal coverage &amp; grade</li>
+          </ul>
+          <div class="pbtn"><a href="javascript:void(0)" onclick="openBookModal('Wedding Video — Silver — ₦900,000')" class="btn btn-gold">Select <span class="arr">→</span></a></div>
+        </div>
+        <div class="plan">
+          <span class="cat">Coverage · Gold</span>
+          <div class="pname">Gold</div>
+          <p class="desc">The full cinematic wedding film.</p>
+          <div class="amt"><span class="cur">₦</span>1,300,000</div>
+          <div class="per">Video coverage</div>
+          <ul>
+            <li>Full film crew</li>
+            <li>Full-day coverage</li>
+            <li>7-min feature film + teaser</li>
+            <li>Drone &amp; gimbal</li>
+            <li>Grade &amp; sound design</li>
+          </ul>
+          <div class="pbtn"><a href="javascript:void(0)" onclick="openBookModal('Wedding Video — Gold — ₦1,300,000')" class="btn btn-ghost">Select</a></div>
+        </div>
+        <p class="pane-note">Wedding video prices are placeholders — update anytime.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING MODAL -->
+<div class="form-modal" id="bookModal" role="dialog" aria-modal="true" aria-label="Book a session">
+  <div class="fm-card">
+    <button class="fm-close" onclick="closeBookModal()" aria-label="Close">✕</button>
+    <span class="eyebrow">Reserve a date</span>
+    <h3 class="fm-title">Let's set the scene.</h3>
+    <div class="book-form">
+        <div id="formView">
+          <div class="field">
+            <label>Full name</label>
+            <input id="b_name" type="text" placeholder="Your name" />
+          </div>
+          <div class="frow">
+            <div class="field">
+              <label>Email</label>
+              <input id="b_email" type="email" placeholder="you@email.com" />
+            </div>
+            <div class="field">
+              <label>Phone / WhatsApp</label>
+              <input id="b_phone" type="tel" placeholder="+234 ..." />
+            </div>
+          </div>
+          <div class="frow">
+            <div class="field">
+              <label>Session type</label>
+              <select id="b_type">
+                <option>Studio Session</option>
+                <option>Pre-Wedding</option>
+                <option>Location Shoot</option>
+                <option>Wedding — Photography</option>
+                <option>Wedding — Photo + Video</option>
+                <option>Wedding — Video Coverage</option>
+                <option>Music Video</option>
+                <option>Commercial</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>Preferred date</label>
+              <input id="b_date" type="date" />
+            </div>
+          </div>
+          <div class="field">
+            <label>Package</label>
+            <select id="b_pkg">
+              <option value="" data-amount="0">Select a package…</option>
+              <optgroup label="Photography · Studio">
+              <option value="Studio — Single Look (1 outfit, 4 copies) — ₦100,000" data-amount="100000">Studio — Single Look (1 outfit, 4 copies) — ₦100,000</option>
+              <option value="Studio — Double Look (2 outfits, 8 copies) — ₦200,000" data-amount="200000">Studio — Double Look (2 outfits, 8 copies) — ₦200,000</option>
+              <option value="Studio — Triple Look (3 outfits, 12 copies) — ₦280,000" data-amount="280000">Studio — Triple Look (3 outfits, 12 copies) — ₦280,000</option>
+              </optgroup>
+              <optgroup label="Photography · Pre-Wedding">
+              <option value="Pre-Wedding — Half-Day Story — ₦300,000" data-amount="300000">Pre-Wedding — Half-Day Story — ₦300,000</option>
+              <option value="Pre-Wedding — Full Story — ₦450,000" data-amount="450000">Pre-Wedding — Full Story — ₦450,000</option>
+              <option value="Pre-Wedding — Grand Story — ₦650,000" data-amount="650000">Pre-Wedding — Grand Story — ₦650,000</option>
+              </optgroup>
+              <optgroup label="Photography · Location">
+              <option value="Location — Single Location — ₦150,000" data-amount="150000">Location — Single Location — ₦150,000</option>
+              <option value="Location — Two Locations — ₦250,000" data-amount="250000">Location — Two Locations — ₦250,000</option>
+              <option value="Location — Premium Tour — ₦380,000" data-amount="380000">Location — Premium Tour — ₦380,000</option>
+              </optgroup>
+              <optgroup label="Photography · Wedding (Photo)">
+              <option value="Wedding Photo — Bronze — ₦400,000" data-amount="400000">Wedding Photo — Bronze — ₦400,000</option>
+              <option value="Wedding Photo — Silver — ₦800,000" data-amount="800000">Wedding Photo — Silver — ₦800,000</option>
+              <option value="Wedding Photo — Gold — ₦1,000,000" data-amount="1000000">Wedding Photo — Gold — ₦1,000,000</option>
+              </optgroup>
+              <optgroup label="Photography · Wedding (Photo + Video)">
+              <option value="Wedding Photo+Video — Bronze — ₦800,000" data-amount="800000">Wedding Photo+Video — Bronze — ₦800,000</option>
+              <option value="Wedding Photo+Video — Silver — ₦1,000,000" data-amount="1000000">Wedding Photo+Video — Silver — ₦1,000,000</option>
+              <option value="Wedding Photo+Video — Gold — ₦1,500,000" data-amount="1500000">Wedding Photo+Video — Gold — ₦1,500,000</option>
+              </optgroup>
+              <optgroup label="Cinematography · Music Video">
+              <option value="Music — Viral Video — ₦350,000" data-amount="350000">Music — Viral Video — ₦350,000</option>
+              <option value="Music — Visualizer — ₦250,000" data-amount="250000">Music — Visualizer — ₦250,000</option>
+              <option value="Music — Official Video — ₦1,200,000" data-amount="1200000">Music — Official Video — ₦1,200,000</option>
+              </optgroup>
+              <optgroup label="Cinematography · Commercial">
+              <option value="Commercial — Promo / Event — ₦450,000" data-amount="450000">Commercial — Promo / Event — ₦450,000</option>
+              <option value="Commercial — Brand Commercial — ₦1,200,000" data-amount="1200000">Commercial — Brand Commercial — ₦1,200,000</option>
+              <option value="Commercial — Full Campaign — ₦2,500,000" data-amount="2500000">Commercial — Full Campaign — ₦2,500,000</option>
+              </optgroup>
+              <optgroup label="Cinematography · Wedding Coverage">
+              <option value="Wedding Video — Bronze — ₦500,000" data-amount="500000">Wedding Video — Bronze — ₦500,000</option>
+              <option value="Wedding Video — Silver — ₦900,000" data-amount="900000">Wedding Video — Silver — ₦900,000</option>
+              <option value="Wedding Video — Gold — ₦1,300,000" data-amount="1300000">Wedding Video — Gold — ₦1,300,000</option>
+              </optgroup>
+              <option value="Custom / discuss first" data-amount="0">Custom / discuss first</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Anything we should know?</label>
+            <textarea id="b_msg" placeholder="Location, vibe, headcount, the package you're eyeing..."></textarea>
+          </div>
+          <div class="terms-check">
+            <input type="checkbox" id="b_terms">
+            <label for="b_terms">I have read and agree to the <a href="terms.html" target="_blank">Terms &amp; Conditions</a>.</label>
+          </div>
+                    <button class="btn btn-gold" onclick="startBooking()">Continue to payment <span class="arr">→</span></button>
+        </div>
+
+        <div id="payView" style="display:none">
+          <div class="pay-head">
+            <span class="eyebrow">Secure payment</span>
+            <h3 id="pay_pkg">—</h3>
+            <div class="pay-amt" id="pay_amt">₦0</div>
+          </div>
+          <button class="btn btn-gold" id="payNowBtn" style="width:100%;justify-content:center" onclick="payWithPaystack()">Pay securely — card, transfer or USSD</button>
+          <div class="pay-or"><span>or pay by bank transfer</span></div>
+          <div class="bank-box">
+            <div><span class="k">Bank</span><span class="v">Stanbic IBTC Bank</span></div>
+            <div><span class="k">Account number</span><span class="v">0072762320</span></div>
+            <div><span class="k">Account name</span><span class="v">Temidayo Omoniyi Fredrick</span></div>
+            <div><span class="k">Amount</span><span class="v" id="pay_amt2">₦0</span></div>
+          </div>
+          <button class="btn btn-ghost" style="width:100%;justify-content:center;margin-top:14px" onclick="confirmTransfer()">I have sent the transfer</button>
+          <button class="btn-link" onclick="backToForm()">← Back to details</button>
+        </div>
+
+
+        <div id="confirmView" style="display:none">
+          <div class="confirm">
+            <div class="check"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D9A24B" stroke-width="1.6"><path d="M5 13l4 4L19 7"/></svg></div>
+            <h3 id="c_title">Request received.</h3>
+            <p id="c_msg">Thank you. We will reply within 24 hours.</p>
+            <div class="recap">
+              <div><span class="k">Package</span><span class="v" id="c_pkg">—</span></div>
+              <div><span class="k">Session</span><span class="v" id="c_type">—</span></div>
+              <div><span class="k">Date</span><span class="v" id="c_date">—</span></div>
+              <div id="c_ref_row" style="display:none"><span class="k">Reference</span><span class="v" id="c_ref">—</span></div>
+            </div>
+            <button class="btn btn-ghost" style="margin-top:26px" onclick="resetForm()">Send another request</button>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
+
+
+<footer>
+  <div class="wrap">
+    <div class="foot-inner">
+      <div class="foot-brand">
+        <img src="Images/tooample-logo.png" alt="TooAmple Studios" class="foot-logo" />
+        <h3 class="foot-cta">Ready to be <em>seen?</em></h3>
+        <a href="book.html" class="btn btn-gold">Book a session <span class="arr">→</span></a>
+      </div>
+      <div class="foot-grid">
+        <div class="fcol">
+          <h4>Studio</h4>
+          <a href="index.html#services">Services</a>
+          <a href="about.html">About</a>
+          <a href="portfolio.html">Portfolio</a>
+          <a href="index.html#pricing">Packages</a>
+          <a href="academy.html">Academy</a>
+          <a href="terms.html">Terms &amp; Conditions</a>
+        </div>
+        <div class="fcol">
+          <h4>Reach us</h4>
+          <p>Lagos, Nigeria</p>
+          <a href="mailto:tooample@gmail.com">tooample@gmail.com</a>
+          <a href="https://www.instagram.com/tooamplestudio/" target="_blank" rel="noopener">@tooamplestudio</a>
+          <a href="https://www.instagram.com/tooample/" target="_blank" rel="noopener">@tooample</a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span>© <span id="yr"></span> TOOAMPLE STUDIOS</span>
+      <span>SHOT IN LAGOS · 2.39:1</span>
+    </div>
+  </div>
+</footer>
+<script>
+const hdr=document.getElementById('hdr');
+addEventListener('scroll',()=>hdr.classList.toggle('scrolled',scrollY>40));
+document.getElementById('yr').textContent=new Date().getFullYear();
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:0.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* ===== Paystack — swap pk_test_ for your pk_live_ key to accept real payments ===== */
+const PAYSTACK_KEY='pk_test_124845fbf4c94de263205dce95caf2e6b001dd91';
+let curAmount=0,curPkg='';
+function startBooking(){
+  const name=document.getElementById('b_name').value.trim();
+  const email=document.getElementById('b_email').value.trim();
+  const sel=document.getElementById('b_pkg');
+  const pkg=sel.value, amount=parseInt(sel.selectedOptions[0].dataset.amount||'0',10);
+  if(!name||!email){alert('Please add your name and email so we can reply.');return;}
+  if(!document.getElementById('b_terms').checked){alert('Please accept the Terms & Conditions to proceed.');return;}
+  if(!pkg){alert('Please choose a package.');return;}
+  curAmount=amount; curPkg=pkg;
+  const label=amount>0?('₦'+amount.toLocaleString()):'Custom quote';
+  document.getElementById('pay_pkg').textContent=pkg;
+  document.getElementById('pay_amt').textContent=label;
+  document.getElementById('pay_amt2').textContent=label;
+  document.getElementById('payNowBtn').style.display=amount>0?'inline-flex':'none';
+  document.getElementById('formView').style.display='none';
+  document.getElementById('payView').style.display='block';
+}
+function payWithPaystack(){
+  const email=document.getElementById('b_email').value.trim();
+  const name=document.getElementById('b_name').value.trim();
+  const phone=document.getElementById('b_phone').value.trim();
+  const date=document.getElementById('b_date').value;
+  const handler=PaystackPop.setup({
+    key:PAYSTACK_KEY,email:email,amount:curAmount*100,currency:'NGN',ref:'TA-'+Date.now(),
+    metadata:{custom_fields:[
+      {display_name:'Package',variable_name:'package',value:curPkg},
+      {display_name:'Client',variable_name:'client',value:name},
+      {display_name:'Phone',variable_name:'phone',value:phone},
+      {display_name:'Preferred date',variable_name:'date',value:date||'—'}
+    ]},
+    callback:function(res){showConfirm('paid',res.reference);},
+    onClose:function(){}
+  });
+  handler.openIframe();
+}
+function confirmTransfer(){showConfirm('transfer','');}
+function backToForm(){document.getElementById('payView').style.display='none';document.getElementById('formView').style.display='block';}
+function showConfirm(mode,ref){
+  const name=document.getElementById('b_name').value.trim();
+  const first=name.split(' ')[0]||'there';
+  const date=document.getElementById('b_date').value;
+  document.getElementById('c_pkg').textContent=curPkg||'—';
+  document.getElementById('c_type').textContent=document.getElementById('b_type').value;
+  document.getElementById('c_date').textContent=date?new Date(date).toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'}):'To be confirmed';
+  if(mode==='paid'){
+    document.getElementById('c_title').textContent='Payment received — you are booked!';
+    document.getElementById('c_msg').innerHTML='Thank you, <b>'+first+'</b>. Your payment was successful and your date is reserved. We will be in touch shortly.';
+    document.getElementById('c_ref').textContent=ref;
+    document.getElementById('c_ref_row').style.display='flex';
+  }else{
+    document.getElementById('c_title').textContent='Almost there — complete your transfer';
+    document.getElementById('c_msg').innerHTML='Thank you, <b>'+first+'</b>. Once your transfer lands we will confirm and lock your date within 24 hours.';
+    document.getElementById('c_ref_row').style.display='none';
+  }
+  document.getElementById('payView').style.display='none';
+  document.getElementById('formView').style.display='none';
+  document.getElementById('confirmView').style.display='block';
+}
+function resetForm(){['b_name','b_phone','b_email','b_date','b_msg'].forEach(id=>document.getElementById(id).value='');document.getElementById('b_pkg').selectedIndex=0;document.getElementById('b_terms').checked=false;document.getElementById('confirmView').style.display='none';document.getElementById('payView').style.display='none';document.getElementById('formView').style.display='block';}
+// pricing tabs
+function switchTab(t){document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('active',b.dataset.tab===t));document.getElementById('photo').style.display=t==='photo'?'block':'none';document.getElementById('video').style.display=t==='video'?'block':'none';}
+function switchSub(scope,s){const r=document.getElementById(scope);if(!r)return;r.querySelectorAll('.subtab').forEach(b=>b.classList.toggle('active',b.dataset.sub===s));r.querySelectorAll('.sub-pane').forEach(p=>{p.style.display=p.id===s?'grid':'none';});}
+function openBookModal(pkg){
+  document.getElementById('formView').style.display='block';
+  document.getElementById('payView').style.display='none';
+  document.getElementById('confirmView').style.display='none';
+  if(pkg){const s=document.getElementById('b_pkg');[...s.options].forEach(o=>{if(o.value===pkg)s.value=pkg;});}
+  const m=document.getElementById('bookModal'); m.classList.add('open'); m.scrollTop=0; document.body.style.overflow='hidden';
+}
+function closeBookModal(){document.getElementById('bookModal').classList.remove('open');document.body.style.overflow='';}
+(function(){const m=document.getElementById('bookModal');m.addEventListener('click',e=>{if(e.target===m)closeBookModal();});addEventListener('keydown',e=>{if(e.key==='Escape'&&m.classList.contains('open'))closeBookModal();});
+  const p=new URLSearchParams(location.search),ty=p.get('type'),pkg=p.get('pkg');
+  if(ty){const s=document.getElementById('b_type');[...s.options].forEach(o=>{if(o.value===ty)s.value=ty;});}
+  if(pkg){openBookModal(pkg);}})();
+</script>
+</body>
+</html>
