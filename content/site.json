@@ -1,14 +1,14 @@
 {
   "hero": {
-    "poster_image": "/uploads/the-unexpected-ii-cover-web.jpg",
-    "play_video_id": "4s8UjaYg0SI",
-    "trailer_video_id": "Y5s4vtN8-5Y",
-    "eyebrow_emphasis": "Episode Two",
     "eyebrow_lead": "Latest Release",
+    "eyebrow_emphasis": "Episode Two",
     "title_line1": "The",
     "title_line2": "Unexpected",
-    "poster_image_mobile": "/uploads/home-mobile.png",
-    "tags": "Action · Sci-Fi · Lagos · 2026"
+    "tags": "Action · Sci-Fi · Lagos · 2026",
+    "poster_image": "",
+    "poster_image_mobile": "",
+    "play_video_id": "4s8UjaYg0SI",
+    "trailer_video_id": "Y5s4vtN8-5Y"
   },
   "watch": {
     "label": "Watch — Now Streaming",
@@ -78,37 +78,43 @@
         "title": "Foundations",
         "desc": "Start here — the AI filmmaking pipeline end to end.",
         "status": "Enroll",
-        "icon": "film"
+        "icon": "film",
+        "price": ""
       },
       {
         "title": "Cinematic Prompting",
         "desc": "Write prompts that produce real cinematic shots.",
         "status": "Enroll",
-        "icon": "spark"
+        "icon": "spark",
+        "price": ""
       },
       {
         "title": "Character Consistency",
         "desc": "Keep faces and characters identical across scenes.",
         "status": "Enroll",
-        "icon": "person"
+        "icon": "person",
+        "price": ""
       },
       {
         "title": "Cinematic Universe",
         "desc": "Build an episodic world like The Unexpected.",
         "status": "Soon",
-        "icon": "layers"
+        "icon": "layers",
+        "price": ""
       },
       {
         "title": "Editing",
         "desc": "Cut, pace, and grade like a feature film.",
         "status": "Enroll",
-        "icon": "film"
+        "icon": "film",
+        "price": ""
       },
       {
         "title": "Storytelling",
         "desc": "Structure stories that hold an audience.",
         "status": "Enroll",
-        "icon": "spark"
+        "icon": "spark",
+        "price": ""
       }
     ]
   },

@@ -87,6 +87,7 @@ collections:
                   - { label: "Title", name: "title", widget: "string" }
                   - { label: "Description", name: "desc", widget: "string", required: false, hint: "One short line under the title" }
                   - { label: "Button text", name: "status", widget: "string", hint: "Enroll, or Soon" }
+                  - { label: "Price (₦, optional)", name: "price", widget: "string", required: false, hint: "Leave EMPTY for a free waitlist. Enter a number (e.g. 25000) to charge with Paystack — card, transfer & USSD. Only works when Button text is 'Enroll'." }
                   - label: "Icon"
                     name: "icon"
                     widget: "select"

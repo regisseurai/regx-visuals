@@ -369,6 +369,15 @@
     letter-spacing:.02em;line-height:1;margin-bottom:10px;
   }
   .enroll-sub{font-size:14px;color:var(--grey);margin-bottom:26px;line-height:1.5}
+  .enroll-price{
+    font-family:var(--mono);font-size:22px;color:var(--amber);
+    letter-spacing:.02em;margin:-4px 0 16px;font-weight:700;
+  }
+  .enroll-fallback{
+    font-size:11px;color:var(--grey);line-height:1.6;margin-top:16px;
+  }
+  .enroll-fallback a{color:var(--amber)}
+  .enroll-fallback b{color:var(--bone);font-weight:600}
   .enroll-input{
     width:100%;background:#070A0C;border:1px solid var(--line);
     padding:15px 16px;margin-bottom:12px;color:var(--bone);
@@ -389,6 +398,8 @@
   .enroll-card.sent form{display:none}
   .enroll-card.sent .enroll-done{display:block}
   .enroll-card.sent .enroll-sub{display:none}
+  .enroll-card.sent .enroll-price{display:none}
+  .enroll-card.sent .enroll-fallback{display:none}
 
   /* ---- bottom app bar (Higgsfield style) ---- */
   .appbar{
@@ -746,6 +757,7 @@
     *,*::before,*::after{animation:none!important;transition:none!important}
   }
 </style>
+<script src="https://js.paystack.co/v1/inline.js"></script>
 </head>
 <body>
 
@@ -839,18 +851,27 @@
     <button class="enroll-x" onclick="closeEnroll()" aria-label="Close">✕</button>
     <p class="mono enroll-eyebrow">Learn — REGX VISUALS</p>
     <h3 class="enroll-title" id="enrollTitle">Enroll</h3>
+    <p class="enroll-price" id="enrollPrice" style="display:none"></p>
     <p class="enroll-sub">Join the waitlist. We'll email you when this course opens.</p>
 
     <form action="https://formspree.io/f/mjgdldjk" method="POST" id="enrollForm" onsubmit="return submitEnroll(event)">
       <p hidden aria-hidden="true"><label>Don't fill this: <input name="_gotcha" tabindex="-1" autocomplete="off" /></label></p>
       <input type="hidden" name="course" id="enrollCourse" value="" />
       <input type="hidden" name="_subject" id="enrollSubject" value="New REGX enrollment" />
+      <input type="hidden" name="amount" id="enrollAmount" value="" />
+      <input type="hidden" name="payment_ref" id="enrollRef" value="" />
       <input class="enroll-input" type="text" name="name" placeholder="YOUR NAME" required />
       <input class="enroll-input" type="email" name="email" placeholder="YOUR@EMAIL.COM" required />
       <button class="enroll-submit" type="submit">Join the Waitlist</button>
     </form>
 
-    <p class="enroll-done" id="enrollDone">You're on the list. We'll be in touch. ✕ to close.</p>
+    <p class="enroll-fallback" id="enrollFallback" style="display:none">
+      Card, bank transfer &amp; USSD accepted. Prefer manual transfer? Send to
+      <b>Stanbic IBTC · 0072762320 · Temidayo Omoniyi Fredrick</b> and email your receipt to
+      <a href="mailto:regisseurai@gmail.com">regisseurai@gmail.com</a>.
+    </p>
+
+    <p class="enroll-done" id="enrollDone">You're all set. Check your email for details. ✕ to close.</p>
   </div>
 </div>
 
@@ -1011,14 +1032,16 @@
         var grid=document.getElementById('courseGrid'); grid.innerHTML='';
         (d.learn.courses||[]).forEach(function(c){
           var a=document.createElement('a'); a.className='course'; a.href='#';
-          var open = (c.status||'').toLowerCase()==='enroll' ? ' open' : '';
           var soon = (c.status||'').toLowerCase()!=='enroll';
+          var priceN = parseInt(String(c.price||'').replace(/[^0-9]/g,''),10) || 0;
+          var open = !soon ? ' open' : '';
+          var badge = soon ? esc(c.status || 'Soon') : (priceN>0 ? '₦'+priceN.toLocaleString() : esc(c.status||'Enroll'));
           a.innerHTML='<div class="co-top"><span class="co-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">'+
             (COURSE_ICONS[c.icon]||COURSE_ICONS.film)+'</svg></span>'+
-            '<span class="co-badge'+open+'">'+esc(c.status)+'</span></div>'+
+            '<span class="co-badge'+open+'">'+badge+'</span></div>'+
             '<span class="co-title">'+esc(c.title)+'</span>'+
             (c.desc?'<span class="co-desc">'+esc(c.desc)+'</span>':'');
-          a.onclick=function(e){ e.preventDefault(); openEnroll(c.title, soon); };
+          a.onclick=function(e){ e.preventDefault(); openEnroll(c.title, soon, priceN); };
           grid.appendChild(a);
         });
       }
@@ -1103,40 +1126,116 @@
     if(e.key === 'Escape'){ closeVideo(); closeMenu(); closeEnroll(); }
   });
 
-  /* ---------- Enroll popup (Formspree) ---------- */
-  function openEnroll(courseTitle, soon){
+  /* ---------- Enroll popup (Formspree waitlist + Paystack checkout) ---------- */
+  var PAYSTACK_KEY = 'pk_test_124845fbf4c94de263205dce95caf2e6b001dd91';  // TODO: swap for LIVE key before launch
+  var ENROLL_STATE = { paid:false, amount:0, course:'' };
+
+  function openEnroll(courseTitle, soon, priceN){
+    priceN = priceN || 0;
     var modal=document.getElementById('enrollModal');
     var card=modal.querySelector('.enroll-card');
     card.classList.remove('sent');
     document.getElementById('enrollForm').reset();
+
+    var paid = (!soon && priceN>0);
+    ENROLL_STATE = { paid:paid, amount:priceN, course:(courseTitle||'Course') };
+
     document.getElementById('enrollCourse').value = courseTitle || 'Course';
-    document.getElementById('enrollSubject').value = 'New REGX enrollment — ' + (courseTitle || 'Course');
+    document.getElementById('enrollAmount').value = paid ? ('NGN '+priceN.toLocaleString()) : '';
+    document.getElementById('enrollRef').value = '';
+    document.getElementById('enrollSubject').value =
+      (paid ? 'New REGX PAID enrollment — ' : 'New REGX enrollment — ') + (courseTitle || 'Course');
     document.getElementById('enrollTitle').textContent = courseTitle || 'Enroll';
-    document.querySelector('.enroll-sub').textContent = soon
-      ? "This course is coming soon — join the waitlist and we'll email you first."
-      : "Join the waitlist. We'll email you when this course opens.";
+
+    var priceEl=document.getElementById('enrollPrice');
+    var fallbackEl=document.getElementById('enrollFallback');
+    var btn=card.querySelector('.enroll-submit');
+
+    if(soon){
+      priceEl.style.display='none'; fallbackEl.style.display='none';
+      document.querySelector('.enroll-sub').textContent =
+        "This course is coming soon — join the waitlist and we'll email you first.";
+      btn.textContent='Join the Waitlist';
+    } else if(paid){
+      priceEl.style.display=''; priceEl.textContent='₦'+priceN.toLocaleString();
+      fallbackEl.style.display='';
+      document.querySelector('.enroll-sub').textContent =
+        "Enter your details, then pay to secure your seat.";
+      btn.textContent='Pay ₦'+priceN.toLocaleString()+' & Enroll';
+    } else {
+      priceEl.style.display='none'; fallbackEl.style.display='none';
+      document.querySelector('.enroll-sub').textContent =
+        "Join the waitlist. We'll email you when this course opens.";
+      btn.textContent='Join the Waitlist';
+    }
     modal.classList.add('open');
     document.body.style.overflow='hidden';
   }
   function closeEnroll(){
-    var modal=document.getElementById('enrollModal');
-    modal.classList.remove('open');
+    document.getElementById('enrollModal').classList.remove('open');
     document.body.style.overflow='';
   }
+
+  function notifyEnroll(form, card, btn, okMsg){
+    // send the enrollment details to Formspree (email notification)
+    fetch(form.action, { method:'POST', headers:{ 'Accept':'application/json' }, body:new FormData(form) })
+      .then(function(res){
+        document.getElementById('enrollDone').textContent = okMsg;
+        card.classList.add('sent');
+      })
+      .catch(function(){
+        // even if the notification email fails, the payment already succeeded — don't alarm the user
+        document.getElementById('enrollDone').textContent = okMsg;
+        card.classList.add('sent');
+      });
+  }
+
   function submitEnroll(e){
     e.preventDefault();
     var form=e.target;
     var btn=form.querySelector('.enroll-submit');
     var card=form.closest('.enroll-card');
+    var name=form.name.value.trim();
+    var email=form.email.value.trim();
+    if(!name || !email){ return false; }
+
+    if(ENROLL_STATE.paid){
+      /* ---- Paystack checkout (card / bank transfer / USSD) ---- */
+      if(typeof PaystackPop==='undefined'){
+        alert('Payment library is still loading — please try again in a moment.');
+        return false;
+      }
+      var ref='REGX-'+Date.now();
+      var handler=PaystackPop.setup({
+        key: PAYSTACK_KEY,
+        email: email,
+        amount: ENROLL_STATE.amount * 100,           // Paystack uses kobo
+        currency: 'NGN',
+        ref: ref,
+        channels: ['card','bank','ussd','bank_transfer'],
+        metadata: { custom_fields: [
+          { display_name:'Name', variable_name:'name', value:name },
+          { display_name:'Course', variable_name:'course', value:ENROLL_STATE.course }
+        ]},
+        callback: function(response){
+          document.getElementById('enrollRef').value = response.reference;
+          notifyEnroll(form, card, btn,
+            'Payment received ✓  You\'re enrolled in '+ENROLL_STATE.course+'. Check your email. ✕ to close.');
+        },
+        onClose: function(){ /* user closed without paying — leave form as-is */ }
+      });
+      handler.openIframe();
+      return false;
+    }
+
+    /* ---- Free waitlist ---- */
     btn.disabled=true; btn.textContent='Sending…';
-    fetch(form.action, {
-      method:'POST',
-      headers:{ 'Accept':'application/json' },
-      body:new FormData(form)
-    })
+    fetch(form.action, { method:'POST', headers:{ 'Accept':'application/json' }, body:new FormData(form) })
     .then(function(res){
-      if(res.ok){ card.classList.add('sent'); }
-      else { res.json().then(function(d){
+      if(res.ok){
+        document.getElementById('enrollDone').textContent="You're on the list. We'll be in touch. ✕ to close.";
+        card.classList.add('sent');
+      } else { res.json().then(function(d){
         btn.disabled=false; btn.textContent='Join the Waitlist';
         alert((d && d.errors && d.errors[0] && d.errors[0].message) || 'Something went wrong — please try again.');
       }).catch(function(){ btn.disabled=false; btn.textContent='Join the Waitlist'; alert('Something went wrong — please try again.'); }); }
