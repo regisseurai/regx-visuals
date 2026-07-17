@@ -1,6 +1,6 @@
 {
   "hero": {
-    "poster_image": "",
+    "poster_image": "/uploads/home-mobile.png",
     "play_video_id": "4s8UjaYg0SI",
     "trailer_video_id": "Y5s4vtN8-5Y",
     "eyebrow_emphasis": "Episode Two",
@@ -79,21 +79,21 @@
         "desc": "Start here — the AI filmmaking pipeline end to end.",
         "status": "Enroll",
         "icon": "film",
-        "price": "200,000"
+        "price": ""
       },
       {
         "title": "Cinematic Prompting",
         "desc": "Write prompts that produce real cinematic shots.",
         "status": "Enroll",
         "icon": "spark",
-        "price": "150,000"
+        "price": ""
       },
       {
         "title": "Character Consistency",
         "desc": "Keep faces and characters identical across scenes.",
         "status": "Enroll",
         "icon": "person",
-        "price": "300,000"
+        "price": ""
       },
       {
         "title": "Cinematic Universe",
