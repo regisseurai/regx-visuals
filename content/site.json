@@ -1,14 +1,14 @@
 {
   "hero": {
-    "eyebrow_lead": "Latest Release",
+    "poster_image": "",
+    "play_video_id": "4s8UjaYg0SI",
+    "trailer_video_id": "Y5s4vtN8-5Y",
     "eyebrow_emphasis": "Episode Two",
+    "eyebrow_lead": "Latest Release",
     "title_line1": "The",
     "title_line2": "Unexpected",
-    "tags": "Action · Sci-Fi · Lagos · 2026",
-    "poster_image": "",
     "poster_image_mobile": "",
-    "play_video_id": "4s8UjaYg0SI",
-    "trailer_video_id": "Y5s4vtN8-5Y"
+    "tags": "Action · Sci-Fi · Lagos · 2026"
   },
   "watch": {
     "label": "Watch — Now Streaming",
@@ -79,21 +79,21 @@
         "desc": "Start here — the AI filmmaking pipeline end to end.",
         "status": "Enroll",
         "icon": "film",
-        "price": ""
+        "price": "200,000"
       },
       {
         "title": "Cinematic Prompting",
         "desc": "Write prompts that produce real cinematic shots.",
         "status": "Enroll",
         "icon": "spark",
-        "price": ""
+        "price": "150,000"
       },
       {
         "title": "Character Consistency",
         "desc": "Keep faces and characters identical across scenes.",
         "status": "Enroll",
         "icon": "person",
-        "price": ""
+        "price": "300,000"
       },
       {
         "title": "Cinematic Universe",
